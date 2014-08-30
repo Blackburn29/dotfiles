@@ -9,6 +9,7 @@ alias cls="clear"
 alias la="ls -a --color=auto"
 alias ll="ls -l --color=auto"
 alias gs="git status"
+alias gp="git push"
 
 # The next line updates PATH for the Google Cloud SDK.
 source "$HOME/google-cloud-sdk/path.bash.inc"
