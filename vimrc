@@ -3,15 +3,21 @@ set nocompatible
 
 "Initialize and setup Vundle.
 filetype off
-set rtp+=~/.vim/bundle/vundle
-call vundle#rc()
-"Let Vundle manage Vundle, required! Do not add comment at end of Bundle lines.
-Bundle 'gmarik/vundle'
-"List Bundles here.
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+"Let Vundle manage Vundle, required! Do not add comment at end of Plugin lines.
+Plugin 'gmarik/vundle'
+"List Plugins here.
 "Go plugin for vim. Not too impressed as of now.
-Bundle 'fatih/vim-go'
+Plugin 'fatih/vim-go'
 "Lucius colorscheme.
-Bundle 'jonathanfilip/vim-lucius'
+Plugin 'jonathanfilip/vim-lucius'
+
+"All of Plugins must be added before the following line.
+call vundle#end()
+syntax on					"Enable syntax highlighting.
+filetype on					"Enable filetype support.
+filetype plugin indent on	"Enable filetype plugins.
 
 set hidden				"Hides buffers instead of closes them.
 set number				"Show line numbers.
@@ -64,10 +70,6 @@ nnoremap <Leader>ev :split $MYVIMRC<CR>
 nnoremap <Leader>sv :source $MYVIMRC<CR>
 "Quick mapping for mksession.
 nnoremap <Leader>mks :mksession! session.vim<CR>
-
-syntax on					"Enable syntax highlighting.
-filetype on					"Enable filetype support.
-filetype plugin indent on	"Enable filetype plugins.
 
 if has("gui-running")
 	set background=light
