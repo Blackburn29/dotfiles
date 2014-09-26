@@ -10,11 +10,10 @@ alias la="ls -a --color=auto"
 alias ll="ls -l --color=auto"
 
 export EDITOR="vim"
-export GOPATH="$HOME/Documents/Code/Go/"
-export PATH="$PATH:$GOPATH/bin"
 export PATH="$PATH:$DIR/bin"
 
-source "$DIR/bashrc.googlecloud"
+source "$DIR/bashrc.go.self"
+source "$DIR/bashrc.googlecloud.self"
 
 if [ -n "$DISPLAY" -a "$TERM" == "xterm" ]; then
 	export TERM="xterm-256color"
