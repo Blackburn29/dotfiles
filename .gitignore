@@ -1,0 +1,2 @@
+#ignore self files. self files refer to a specific host machine.
+*.self
