@@ -49,8 +49,6 @@ set lazyredraw			"Redraw only when vim needs to.
 let mapleader = ","		"Set the leader to ','.
 "Map kj in insert mode to <Esc>
 inoremap kj <Esc>
-"Map Control Space to Eclipse-like auto completion.
-inoremap <C-Space> <C-x><C-o>
 "Go to bash command editing.
 nnoremap <Leader>c :!
 "Scope dependent variable renaming.
@@ -69,7 +67,7 @@ nnoremap ; :
 nnoremap <Leader>ev :split $MYVIMRC<CR>
 nnoremap <Leader>sv :source $MYVIMRC<CR>
 "Quick mapping for mksession.
-nnoremap <Leader>mks :mksession! session.vim<CR>
+nnoremap <Leader>mks :mksession! Session.vim<CR>
 
 if has("gui-running")
 	set background=light
@@ -78,3 +76,4 @@ else
 endif
 colorscheme lucius
 
+nohlsearch
