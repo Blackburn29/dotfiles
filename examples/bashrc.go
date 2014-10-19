@@ -1,3 +1,0 @@
-export GOPATH="$HOME/Documents/Go/"
-export PATH="$PATH:$GOPATH"
-
