@@ -22,12 +22,16 @@ filetype plugin indent on	"Enable filetype plugins.
 set hidden				"Hides buffers instead of closes them.
 set number				"Show line numbers.
 set ruler				"Show the ruler.
-set nowrap				"DO not wrap lines.
+set nowrap				"Do not wrap lines.
 set autoindent			"Always set autoindenting on.
 set tabstop=4			"Set number of spaces per tab.
 set shiftwidth=4		"Number of spaces to use for autoindenting.
 set shiftround			"Use multiple of shiftwidth when using '<' and '>'.
-set smarttab			"Insert tans on start of line according to shiftwidth, not tabstop.
+set smarttab			"Insert tabs on start of line according to shiftwidth, not tabstop.
+set expandtab			"Insert spaces instead of tabs.
+if exists('+colorcolumn')
+	set colorcolumn=80
+endif
 set showcmd				"Show the command that is being typed.	
 set scrolloff=8			"Set number of lines above/below the cursor.
 set sidescrolloff=8		"Set number of columns left/right of cursor.
@@ -51,16 +55,13 @@ let mapleader = ","		"Set the leader to ','.
 inoremap kj <Esc>
 "Go to bash command editing.
 nnoremap <Leader>c :!
-"Scope dependent variable renaming.
-nnoremap <Leader>r *Ngd:%s///gc<Left><Left><Left>
-"Scope independent variable renaming.
-nnoremap <Leader>R *NgD:%s///gc<Left><Left><Left>
 "Insert line below cursor line.
 nnoremap <Leader>o o<Esc><Up>
 "Insert line above cursor line.
 nnoremap <Leader>O O<Esc><Down>
 "Clear highlighted search text.
 nnoremap <Leader>/ :nohlsearch<CR>
+nnoremap <Leader>e :E<CR>
 "Useful as hell.
 nnoremap ; :
 "Quickly edit and source vimrc file.
