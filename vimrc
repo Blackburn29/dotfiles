@@ -50,6 +50,8 @@ set noerrorbells		"Do not beep.
 set nobackup			"Do not use backup files.
 set lazyredraw			"Redraw only when vim needs to.
 
+autocmd FileType go set noexpandtab
+
 let mapleader = ","		"Set the leader to ','.
 "Map kj in insert mode to <Esc>
 inoremap kj <Esc>
