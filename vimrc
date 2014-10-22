@@ -58,7 +58,7 @@ inoremap kj <Esc>
 "Go to bash command editing.
 nnoremap <Leader>c :!
 "Insert line below cursor line.
-nnoremap <Leader>o o<Esc><Up>
+nnoremap <Leader>o o<Esc>
 "Insert line above cursor line.
 nnoremap <Leader>O O<Esc><Down>
 "Clear highlighted search text.
