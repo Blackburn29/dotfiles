@@ -38,7 +38,6 @@ set sidescrolloff=8		"Set number of columns left/right of cursor.
 set cursorline			"Highlight the current line.
 set showmatch			"Highlight matching brace characters.
 set incsearch			"Show search matches as you type.
-set ignorecase			"Ignore case when searching.
 set hlsearch			"Highlight search matchesv
 set smartcase			"Use smartcase when searching.
 set backspace=indent,eol,start				"Allow backspacing over everything in insert mode.
@@ -60,7 +59,7 @@ nnoremap <Leader>c :!
 "Insert line below cursor line.
 nnoremap <Leader>o o<Esc>
 "Insert line above cursor line.
-nnoremap <Leader>O O<Esc><Down>
+nnoremap <Leader>O O<Esc>
 "Clear highlighted search text.
 nnoremap <Leader>/ :nohlsearch<CR>
 nnoremap <Leader>e :E<CR>
