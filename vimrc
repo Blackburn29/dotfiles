@@ -33,8 +33,8 @@ if exists('+colorcolumn')
 	set colorcolumn=80
 endif
 set showcmd				"Show the command that is being typed.	
-set scrolloff=8			"Set number of lines above/below the cursor.
-set sidescrolloff=8		"Set number of columns left/right of cursor.
+set scrolloff=10		"Set number of lines above/below the cursor.
+set sidescrolloff=10	"Set number of columns left/right of cursor.
 set cursorline			"Highlight the current line.
 set showmatch			"Highlight matching brace characters.
 set incsearch			"Show search matches as you type.
@@ -48,12 +48,14 @@ set visualbell			"Do not beep.
 set noerrorbells		"Do not beep.
 set nobackup			"Do not use backup files.
 set lazyredraw			"Redraw only when vim needs to.
+set statusline+=%f
+set laststatus=2
 
 autocmd FileType go set noexpandtab
 
-let mapleader = ","		"Set the leader to ','.
-"Map kj in insert mode to <Esc>
+let mapleader = " "
 inoremap kj <Esc>
+inoremap jk <Esc>
 "Go to bash command editing.
 nnoremap <Leader>c :!
 "Insert line below cursor line.
