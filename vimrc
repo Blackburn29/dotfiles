@@ -63,7 +63,7 @@ nnoremap <Leader>o o<Esc>
 "Insert line above cursor line.
 nnoremap <Leader>O O<Esc>
 "Clear highlighted search text.
-nnoremap <Leader>/ :nohlsearch<CR>
+nnoremap <silent> <Leader>/ :nohlsearch<CR> :let@/=""<CR>
 nnoremap <Leader>e :E<CR>
 "Useful as hell.
 nnoremap ; :
