@@ -12,6 +12,8 @@ Plugin 'gmarik/vundle'
 Plugin 'fatih/vim-go'
 "Lucius colorscheme.
 Plugin 'jonathanfilip/vim-lucius'
+"Coffeescript plugin
+Plugin 'kchmck/vim-coffee-script'
 
 "All of Plugins must be added before the following line.
 call vundle#end()
@@ -72,6 +74,10 @@ nnoremap <Leader>ev :split $MYVIMRC<CR>
 nnoremap <Leader>sv :source $MYVIMRC<CR>
 "Quick mapping for mksession.
 nnoremap <Leader>mks :mksession! Session.vim<CR>
+nnoremap <C-J> <C-W>j
+nnoremap <C-K> <C-W>k
+nnoremap <C-H> <C-W>h
+nnoremap <C-L> <C-W>l
 
 if has("gui-running")
 	set background=light
