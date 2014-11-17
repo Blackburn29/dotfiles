@@ -23,7 +23,6 @@ filetype plugin indent on	"Enable filetype plugins.
 
 set hidden				"Hides buffers instead of closes them.
 set number				"Show line numbers.
-set ruler				"Show the ruler.
 set nowrap				"Do not wrap lines.
 set autoindent			"Always set autoindenting on.
 set tabstop=4			"Set number of spaces per tab.
@@ -78,6 +77,8 @@ nnoremap <C-J> <C-W>j
 nnoremap <C-K> <C-W>k
 nnoremap <C-H> <C-W>h
 nnoremap <C-L> <C-W>l
+nnoremap <S-H> gT
+nnoremap <S-L> gt
 
 if has("gui-running")
 	set background=light
