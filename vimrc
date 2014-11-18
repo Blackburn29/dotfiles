@@ -49,7 +49,13 @@ set visualbell			"Do not beep.
 set noerrorbells		"Do not beep.
 set nobackup			"Do not use backup files.
 set lazyredraw			"Redraw only when vim needs to.
+
+set statusline=
 set statusline+=%f
+set statusline+=\ %m
+set statusline+=%=
+set statusline+=%l\/%L
+set statusline+=\ \ 
 set laststatus=2
 
 autocmd FileType go set noexpandtab
@@ -87,4 +93,3 @@ else
 endif
 colorscheme lucius
 
-nohlsearch
