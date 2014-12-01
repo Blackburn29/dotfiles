@@ -58,6 +58,8 @@ set statusline+=%l\/%L
 set statusline+=\ \ 
 set laststatus=2
 
+set directory=$HOME/.vim/swapfiles//
+
 autocmd FileType go set noexpandtab
 
 let mapleader = " "
