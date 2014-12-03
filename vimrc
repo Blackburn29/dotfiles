@@ -36,10 +36,13 @@ set showcmd
 set scrolloff=10
 set sidescrolloff=10
 set cursorline
-set showmatch
+set noshowmatch
 set incsearch
 set hlsearch
 set smartcase
+set novisualbell
+set noerrorbells
+set title
 set backspace=indent,eol,start
 set history=1000
 set undolevels=1000
@@ -55,33 +58,42 @@ set statusline+=%l\/%L
 set statusline+=\ \ 
 set laststatus=2
 
-set directory=$HOME/.vim/swapfiles//
+"Backups.
+set backupdir=~/.vim/tmp/back//,.
+set directory=~/.vim/tmp/swp//,.
+if exists('+undodir')
+    set undodir=~./vim/tmp/undo,.
+endif
+if exists('+undofile')
+    set undofile
+endif
 
 autocmd FileType go set noexpandtab
 
 "Mappings.
 let mapleader = " "
+let maplocalleader = ","
 inoremap kj <Esc>
 inoremap jk <Esc>
 nnoremap ; :
-
 nnoremap <silent> <Leader>/ :nohlsearch<CR> :let@/=""<CR>
 nnoremap <Leader>c :!
-
 nnoremap <Leader>o o<Esc>
 nnoremap <Leader>O O<Esc>
-
 nnoremap <Leader>ev :split $MYVIMRC<CR>
 nnoremap <Leader>sv :source $MYVIMRC<CR>
 nnoremap <Leader>mks :mksession! Session.vim<CR>
-
 nnoremap <C-J> <C-W>j
 nnoremap <C-K> <C-W>k
 nnoremap <C-H> <C-W>h
 nnoremap <C-L> <C-W>l
-
 nnoremap <S-H> gT
 nnoremap <S-L> gt
+nnoremap <Tab> %
+vnoremap <Tab> %
+nnoremap _ ddp
+nnoremap - ddkP
+nnoremap D ^C
 
 "Color scheme.
 if has("gui-running")
