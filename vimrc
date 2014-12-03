@@ -11,9 +11,13 @@ Plugin 'gmarik/vundle'
 Plugin 'fatih/vim-go'
 Plugin 'jonathanfilip/vim-lucius'
 Plugin 'kchmck/vim-coffee-script'
+Plugin 'scrooloose/nerdtree'
 
 "All of Plugins must be added before the following line.
 call vundle#end()
+
+"Custom Plugin Config.
+source nerdtree.vim
 
 syntax on
 filetype on
@@ -61,12 +65,6 @@ set laststatus=2
 "Backups.
 set backupdir=~/.vim/tmp/back//,.
 set directory=~/.vim/tmp/swp//,.
-if exists('+undodir')
-    set undodir=~./vim/tmp/undo,.
-endif
-if exists('+undofile')
-    set undofile
-endif
 
 autocmd FileType go set noexpandtab
 
