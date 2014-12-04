@@ -8,6 +8,8 @@ PS1="\[\033[1;34m\][\u@\h] \W \$\[\033[00m\] "
 alias cls="clear"
 alias la="ls -a --color=auto"
 alias ll="ls -l --color=auto"
+alias ..="cd .."
+alias .="pwd"
 
 export EDITOR="vim"
 export PATH="$PATH:$DIR/bin"

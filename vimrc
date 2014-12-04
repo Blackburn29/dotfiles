@@ -16,9 +16,6 @@ Plugin 'scrooloose/nerdtree'
 "All of Plugins must be added before the following line.
 call vundle#end()
 
-"Custom Plugin Config.
-source nerdtree.vim
-
 syntax on
 filetype on
 filetype plugin indent on
@@ -46,58 +43,85 @@ set hlsearch
 set smartcase
 set novisualbell
 set noerrorbells
-set title
 set backspace=indent,eol,start
+set nolist
+set listchars=eol:$,tab:>-
 set history=1000
 set undolevels=1000
 set wildignore=*.swp,*.bak,*.class,*.~
 set lazyredraw
 
 "Status line config.
-set statusline=
+set statusline=\ \ 
 set statusline+=%f
 set statusline+=\ %m
 set statusline+=%=
-set statusline+=%l\/%L
+set statusline+=%l\/%L\ 
 set statusline+=\ \ 
 set laststatus=2
-
-"Backups.
-set backupdir=~/.vim/tmp/back//,.
-set directory=~/.vim/tmp/swp//,.
-
-autocmd FileType go set noexpandtab
 
 "Mappings.
 let mapleader = " "
 let maplocalleader = ","
-inoremap kj <Esc>
-inoremap jk <Esc>
-nnoremap ; :
-nnoremap <silent> <Leader>/ :nohlsearch<CR> :let@/=""<CR>
+nnoremap <silent> <Leader>/ :nohlsearch<CR> :let @/=""<CR>
 nnoremap <Leader>c :!
 nnoremap <Leader>o o<Esc>
 nnoremap <Leader>O O<Esc>
 nnoremap <Leader>ev :split $MYVIMRC<CR>
 nnoremap <Leader>sv :source $MYVIMRC<CR>
 nnoremap <Leader>mks :mksession! Session.vim<CR>
-nnoremap <C-J> <C-W>j
-nnoremap <C-K> <C-W>k
-nnoremap <C-H> <C-W>h
-nnoremap <C-L> <C-W>l
-nnoremap <S-H> gT
-nnoremap <S-L> gt
+nnoremap <Leader>x :wqa<CR>
+nnoremap <Leader>j <C-W>j
+nnoremap <Leader>k <C-W>k
+nnoremap <Leader>h <C-W>h
+nnoremap <Leader>l <C-W>l
+inoremap kj <Esc>
+inoremap jk <Esc>
+nnoremap ; :
+nnoremap <S-H> :bN<CR>
+nnoremap <S-L> :bn<CR>
 nnoremap <Tab> %
 vnoremap <Tab> %
 nnoremap _ ddp
 nnoremap - ddkP
 nnoremap D ^C
 
-"Color scheme.
+"Backups.
+function s:EnsureDirectoryExists(path)
+    if empty(glob(a:path))
+        if !mkdir(a:path, "p")
+            echoerr "Could not create directory \"" . a:path . "\""
+        else
+            return 1
+        endif
+    endif
+    return 1
+endfunction
+
+let s:backupDirPath = $HOME . "/.vim/tmp/back/"
+if s:EnsureDirectoryExists(s:backupDirPath)
+    let &backupdir = s:backupDirPath
+endif
+
+let s:swapDirectoryPath = $HOME . "/.vim/tmp/swp/"
+if s:EnsureDirectoryExists(s:swapDirectoryPath)
+    let &directory = s:swapDirectoryPath . "/"
+endif
+
+if exists('+undodir')
+    let s:undoDirPath = $HOME . "/.vim/tmp/undo/"
+    if s:EnsureDirectoryExists(s:undoDirPath)
+        let &undodir = s:undoDirPath
+    endif
+endif
+if exists('+undofile')
+    set undofile
+endif
+
+"Color scheme
 if has("gui-running")
 	set background=light
 else
 	set background=dark
 endif
 colorscheme lucius
-
