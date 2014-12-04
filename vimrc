@@ -118,7 +118,7 @@ if exists('+undofile')
     set undofile
 endif
 
-"Color scheme
+"Color scheme.
 if has("gui-running")
 	set background=light
 else
