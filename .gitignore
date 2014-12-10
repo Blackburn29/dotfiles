@@ -1,6 +1,3 @@
-#ignore self files. self files refer to configuration of a specific host machine.
-*.self
-
-#ignore this binary.
-bin/exercism
+#ignore self directory. scripts here are host specific.
+self/
 

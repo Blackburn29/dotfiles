@@ -64,17 +64,19 @@ set laststatus=2
 let mapleader = " "
 let maplocalleader = ","
 nnoremap <silent> <Leader>/ :nohlsearch<CR> :let @/=""<CR>
-nnoremap <Leader>c :!
+nnoremap <Leader>c :w<Bar>bp<Bar>sp<Bar>bn<Bar>bd<CR>
 nnoremap <Leader>o o<Esc>
 nnoremap <Leader>O O<Esc>
 nnoremap <Leader>ev :split $MYVIMRC<CR>
 nnoremap <Leader>sv :source $MYVIMRC<CR>
-nnoremap <Leader>mks :mksession! Session.vim<CR>
+nnoremap <Leader>mks :mksession!<CR>
 nnoremap <Leader>x :wqa<CR>
+nnoremap <Leader>w :wa<CR>
 nnoremap <Leader>j <C-W>j
 nnoremap <Leader>k <C-W>k
 nnoremap <Leader>h <C-W>h
 nnoremap <Leader>l <C-W>l
+nnoremap <Leader>p :set paste!<CR>:set paste?<CR>
 inoremap kj <Esc>
 inoremap jk <Esc>
 nnoremap ; :
@@ -84,10 +86,9 @@ nnoremap <Tab> %
 vnoremap <Tab> %
 nnoremap _ ddp
 nnoremap - ddkP
-nnoremap D ^C
 
 "Backups.
-function s:EnsureDirectoryExists(path)
+function! s:EnsureDirectoryExists(path)
     if empty(glob(a:path))
         if !mkdir(a:path, "p")
             echoerr "Could not create directory \"" . a:path . "\""
@@ -117,6 +118,11 @@ endif
 if exists('+undofile')
     set undofile
 endif
+
+"Util functions.
+function! EEBufferCount()
+    return len(filter(range(1, bufnr("$")), 'buflisted(v:val)'))
+endfunction
 
 "Color scheme.
 if has("gui-running")

@@ -1,5 +1,0 @@
-value=`gsettings get org.gnome.desktop.session idle-delay`
-gsettings set org.gnome.desktop.session idle-delay 0
-firefox > /dev/null 2>&1
-gsettings set org.gnome.desktop.session idle-delay `echo $value | cut -d ' ' -f 2`
-
