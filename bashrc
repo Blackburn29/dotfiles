@@ -13,7 +13,7 @@ export PATH="$PATH:$DIR/bin"
 #source .sh files in the directories listed in the following array.
 scriptDirPaths=("bash" "self")
 for dirName in ${scriptDirPaths[@]}; do
-    if [ -d "$dirName" ]; then
+    if [ -d "$DIR/$dirName" ]; then
         for filePath in $(find "$DIR/$dirName" -regextype posix-egrep -regex ".*\.sh$"); do
             source "$filePath"
         done
