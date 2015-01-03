@@ -10,7 +10,6 @@ Plugin 'gmarik/vundle'
 "List Plugins here.
 Plugin 'fatih/vim-go'
 Plugin 'jonathanfilip/vim-lucius'
-Plugin 'kchmck/vim-coffee-script'
 Plugin 'scrooloose/nerdtree'
 
 "All of Plugins must be added before the following line.
