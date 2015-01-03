@@ -11,6 +11,9 @@ manage_bash() {
 }
 
 manage_vim() {
+    mkdir -p ~/.vim
+    ln -sf "$DIR/vimrc" ~ && mv -f ~/vimrc ~/.vimrc
+
     vimdirs=( plugin ftplugin ftdetect indent )
     for vimdir in ${vimdirs[@]}; do
         mkdir -p "$DIR/vim/$vimdir"
