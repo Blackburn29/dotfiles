@@ -40,16 +40,20 @@ set cursorline
 set noshowmatch
 set incsearch
 set hlsearch
+set gdefault
 set smartcase
 set novisualbell
 set noerrorbells
 set backspace=indent,eol,start
-set nolist
 set listchars=eol:$,tab:>-
+set nolist
 set history=1000
 set undolevels=1000
 set wildignore=*.swp,*.bak,*.class,*.~
 set lazyredraw
+set ttyfast
+set splitbelow
+set splitright
 
 "Status line config.
 set statusline=\ \ 
@@ -77,15 +81,27 @@ nnoremap <Leader>k <C-W>k
 nnoremap <Leader>h <C-W>h
 nnoremap <Leader>l <C-W>l
 nnoremap <Leader>p :set paste!<CR>:set paste?<CR>
+nnoremap <Leader>4 $i
+nnoremap <Leader>R *:%s///c<Left><Left>
+nnoremap <Leader>= <C-W>=
 inoremap kj <Esc>
-inoremap jk <Esc>
 nnoremap ; :
-nnoremap <S-H> :bN<CR>
-nnoremap <S-L> :bn<CR>
+nnoremap : ;
+nnoremap <silent> <S-H> :bN<CR>
+nnoremap <silent> <S-L> :bn<CR>
 nnoremap <Tab> %
 vnoremap <Tab> %
 nnoremap _ ddp
 nnoremap - ddkP
+cnoremap kj <C-C>
+
+augroup EnterFileLineReturn
+    autocmd!
+    autocmd BufReadPost *
+        \ if line("'\"") > 0 && line("'\"") <= line("$") |
+        \     execute 'normal! g`"zvzz' |
+        \ endif
+augroup END
 
 "Backups.
 function! s:EnsureDirectoryExists(path)
