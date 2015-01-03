@@ -4,6 +4,10 @@
 DIR="$(cd -P "$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")" && pwd)"
 
 manage_bash() {
+    if [ ! -d "$DIR/self" ]; then
+        mkdir "$DIR/self" && echo "Made the self directory for you. Put .sh files here."
+    fi
+
     #add a source line to ~/.bashrc to source this file if it does not already exist.
     if ! grep -q "source.*$DIR/bashrc" ~/.bashrc; then
         echo -e "\nsource $DIR/bashrc\n" >> ~/.bashrc
