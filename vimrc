@@ -9,8 +9,11 @@ call vundle#begin()
 Plugin 'gmarik/vundle'
 "List Plugins here.
 Plugin 'fatih/vim-go'
-Plugin 'jonathanfilip/vim-lucius'
 Plugin 'scrooloose/nerdtree'
+Plugin 'bling/vim-airline'
+Plugin 'bling/vim-bufferline'
+Plugin 'tpope/vim-fugitive'
+Plugin 'jonathanfilip/vim-lucius'
 
 "All of Plugins must be added before the following line.
 call vundle#end()
@@ -66,7 +69,7 @@ set laststatus=2
 "Mappings.
 let mapleader = " "
 let maplocalleader = ","
-nnoremap <silent> <Leader>/ :nohlsearch<CR> :let @/=""<CR>
+nnoremap <silent> <Leader>/ :nohlsearch<CR> :let @/=""<CR> <Left>
 nnoremap <Leader>c :w<Bar>bp<Bar>sp<Bar>bn<Bar>bd<CR>
 nnoremap <Leader>o o<Esc>
 nnoremap <Leader>O O<Esc>
