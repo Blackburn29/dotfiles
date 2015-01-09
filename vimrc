@@ -85,6 +85,14 @@ nnoremap <Leader>l <C-W>l
 nnoremap <Leader>p :set paste!<CR>:set paste?<CR>
 nnoremap <Leader>4 $i
 nnoremap <Leader>R *:%s///c<Left><Left>
+nnoremap <silent> <Leader>1 :buffer 1<CR>
+nnoremap <silent> <Leader>2 :buffer 2<CR>
+nnoremap <silent> <Leader>3 :buffer 3<CR>
+nnoremap <silent> <Leader>4 :buffer 4<CR>
+nnoremap <silent> <Leader>5 :buffer 5<CR>
+nnoremap <silent> <Leader>6 :buffer 6<CR>
+nnoremap <silent> <Leader>7 :buffer 7<CR>
+nnoremap <silent> <Leader>8 :buffer 8<CR>
 nnoremap <Leader>= <C-W>=
 inoremap kj <Esc>
 nnoremap ; :
@@ -148,4 +156,4 @@ if has("gui-running")
 else
 	set background=dark
 endif
-colorscheme lucius
+silent! colorscheme lucius
