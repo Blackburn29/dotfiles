@@ -84,6 +84,7 @@ nnoremap <Leader>h <C-W>h
 nnoremap <Leader>l <C-W>l
 nnoremap <Leader>p :set paste!<CR>:set paste?<CR>
 nnoremap <Leader>R *:%s///c<Left><Left>
+nnoremap <silent> <Leader><Tab> :b#<CR>
 nnoremap <silent> <Leader>1 :buffer 1<CR>
 nnoremap <silent> <Leader>2 :buffer 2<CR>
 nnoremap <silent> <Leader>3 :buffer 3<CR>
