@@ -69,7 +69,7 @@ set laststatus=2
 "Mappings.
 let mapleader = " "
 let maplocalleader = ","
-nnoremap <silent> <Leader>/ :nohlsearch<CR> :let @/=""<CR> <Left>
+nnoremap <silent> <Leader>/ :nohlsearch<CR> :let @/=""<CR><Left>
 nnoremap <Leader>c :w<Bar>bp<Bar>sp<Bar>bn<Bar>bd<CR>
 nnoremap <Leader>o o<Esc>
 nnoremap <Leader>O O<Esc>
