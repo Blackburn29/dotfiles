@@ -14,7 +14,6 @@ Plugin 'bling/vim-airline'
 Plugin 'bling/vim-bufferline'
 Plugin 'tpope/vim-fugitive'
 Plugin 'jonathanfilip/vim-lucius'
-
 "All of Plugins must be added before the following line.
 call vundle#end()
 
@@ -27,11 +26,12 @@ set hidden
 set number
 set nowrap
 set autoindent
-set tabstop=4
+set smartindent
+set expandtab
+set tabstop=8
+set softtabstop=4
 set shiftwidth=4
 set shiftround
-set smarttab
-set expandtab
 if exists('+colorcolumn')
 	set colorcolumn=80
 endif
