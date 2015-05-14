@@ -13,7 +13,10 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'bling/vim-airline'
 Plugin 'bling/vim-bufferline'
 Plugin 'tpope/vim-fugitive'
-Plugin 'jonathanfilip/vim-lucius'
+Plugin 'andrwb/vim-lapis256'
+Plugin 'twerth/ir_black'
+Plugin 'vyshane/vydark-vim-color'
+Plugin 'mattn/emmet-vim'
 "All of Plugins must be added before the following line.
 call vundle#end()
 
@@ -26,6 +29,7 @@ set hidden
 set number
 set nowrap
 set autoindent
+set nosmarttab
 set smartindent
 set expandtab
 set tabstop=4
@@ -151,9 +155,5 @@ function! EEBufferCount()
 endfunction
 
 "Color scheme.
-if has("gui-running")
-	set background=light
-else
 	set background=dark
-endif
-silent! colorscheme lucius
+colorscheme lapis256
