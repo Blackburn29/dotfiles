@@ -6,17 +6,19 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 "Let Vundle manage Vundle, required! Do not add comment at end of Plugin lines.
-Plugin 'gmarik/vundle'
+Plugin 'gmarik/Vundle.vim'
 "List Plugins here.
 Plugin 'fatih/vim-go'
 Plugin 'scrooloose/nerdtree'
-Plugin 'bling/vim-airline'
+"Plugin 'bling/vim-airline'
 Plugin 'bling/vim-bufferline'
 Plugin 'tpope/vim-fugitive'
 Plugin 'andrwb/vim-lapis256'
-Plugin 'twerth/ir_black'
-Plugin 'vyshane/vydark-vim-color'
+Plugin 'tpope/vim-surround'
+Plugin 'Raimondi/delimitMate'
 Plugin 'mattn/emmet-vim'
+Plugin 'Valloric/YouCompleteMe'
+Bundle 'Lokaltog/vim-powerline'
 "All of Plugins must be added before the following line.
 call vundle#end()
 
@@ -156,4 +158,19 @@ endfunction
 
 "Color scheme.
 	set background=dark
+
 colorscheme lapis256
+
+let g:ycm_min_num_of_chars_for_completion = 8
+let g:ycm_echo_current_diagnostic = 0
+let g:ycm_show_diagnostics_ui = 0
+let g:bufferline_rotate = 1
+
+set rtp+=$HOME/.local/lib/python2.7/dist-packages/powerline/bindings/vim/
+set laststatus=2
+set t_Co=256
+let g:Powerline_symbols = 'fancy'
+let g:Powerline_dividers_override = ["\Ue0b0", "\Ue0b1", "\Ue0b2", "\Ue0b3"]
+let g:Powerline_symbols_override = { 'BRANCH': "\Ue0a0", 'LINE': "\Ue0a1", 'RO': "\Ue0a2" }
+highlight ColorColumn ctermbg=238 guibg=#2c2d27
+let &colorcolumn="80,".join(range(120,999),",")
