@@ -1,4 +1,3 @@
-
 set nocompatible
 
 "Initialize and setup Vundle.
@@ -10,15 +9,20 @@ Plugin 'gmarik/Vundle.vim'
 "List Plugins here.
 Plugin 'fatih/vim-go'
 Plugin 'scrooloose/nerdtree'
-"Plugin 'bling/vim-airline'
 Plugin 'bling/vim-bufferline'
-Plugin 'tpope/vim-fugitive'
 Plugin 'andrwb/vim-lapis256'
-Plugin 'tpope/vim-surround'
-Plugin 'Raimondi/delimitMate'
-Plugin 'mattn/emmet-vim'
 Plugin 'Valloric/YouCompleteMe'
-Bundle 'Lokaltog/vim-powerline'
+Plugin 'digitaltoad/vim-jade'
+Plugin 'StanAngeloff/php.vim'
+Plugin 'unblevable/quick-scope'
+Plugin 'blackgate/tropikos-vim-theme'
+Plugin 'kylef/apiblueprint.vim'
+Plugin 'bling/vim-airline'
+Plugin 'scrooloose/syntastic'
+Plugin 'Haron-Prime/evening_vim'
+Plugin 'mhumeSF/one-dark.vim'
+Plugin 'djjcast/mirodark'
+Plugin 'mxw/vim-jsx'
 "All of Plugins must be added before the following line.
 call vundle#end()
 
@@ -29,6 +33,7 @@ filetype plugin indent on
 "Config.
 set hidden
 set number
+set relativenumber
 set nowrap
 set autoindent
 set nosmarttab
@@ -38,9 +43,7 @@ set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 set shiftround
-if exists('+colorcolumn')
-	set colorcolumn=80
-endif
+set listchars=tab:▸\ ,eol:¬
 set showcmd
 set scrolloff=10
 set sidescrolloff=10
@@ -76,14 +79,14 @@ set laststatus=2
 let mapleader = " "
 let maplocalleader = ","
 nnoremap <silent> <Leader>/ :nohlsearch<CR> :let @/=""<CR><Left>
-nnoremap <Leader>c :w<Bar>bp<Bar>sp<Bar>bn<Bar>bd<CR>
+nnoremap <Leader>C :w<Bar>bp<Bar>sp<Bar>bn<Bar>bd<CR>
 nnoremap <Leader>o o<Esc>
 nnoremap <Leader>O O<Esc>
 nnoremap <Leader>ev :split $MYVIMRC<CR>
 nnoremap <Leader>sv :source $MYVIMRC<CR>
 nnoremap <Leader>mks :mksession!<CR>
 nnoremap <Leader>x :wqa<CR>
-nnoremap <Leader>w :wa<CR>
+nnoremap <Leader>w :retab<CR>:wa<CR>
 nnoremap <Leader>j <C-W>j
 nnoremap <Leader>k <C-W>k
 nnoremap <Leader>h <C-W>h
@@ -100,6 +103,9 @@ nnoremap <silent> <Leader>6 :buffer 6<CR>
 nnoremap <silent> <Leader>7 :buffer 7<CR>
 nnoremap <silent> <Leader>8 :buffer 8<CR>
 nnoremap <Leader>= <C-W>=
+nnoremap <silent> <Leader>c "+yy
+nnoremap <Leader>q :q<CR>
+vnoremap <silent> <Leader>c "+y
 inoremap kj <Esc>
 nnoremap ; :
 nnoremap : ;
@@ -110,6 +116,9 @@ vnoremap <Tab> %
 nnoremap _ ddp
 nnoremap - ddkP
 cnoremap kj <C-C>
+
+imap <C-s> <esc>a<Plug>snipMateNextOrTrigger
+smap <C-s> <Plug>snipMateNextOrTrigger
 
 augroup EnterFileLineReturn
     autocmd!
@@ -156,21 +165,25 @@ function! EEBufferCount()
     return len(filter(range(1, bufnr("$")), 'buflisted(v:val)'))
 endfunction
 
-"Color scheme.
-	set background=dark
+let g:go_fmt_command = "goimports"
 
-colorscheme lapis256
-
-let g:ycm_min_num_of_chars_for_completion = 8
+let g:ycm_min_num_of_chars_for_completion = 4
 let g:ycm_echo_current_diagnostic = 0
 let g:ycm_show_diagnostics_ui = 0
 let g:bufferline_rotate = 1
+let g:bufferline_fixed_index = 0
+let g:bufferline_fname_mod = ':t'
 
-set rtp+=$HOME/.local/lib/python2.7/dist-packages/powerline/bindings/vim/
-set laststatus=2
-set t_Co=256
-let g:Powerline_symbols = 'fancy'
-let g:Powerline_dividers_override = ["\Ue0b0", "\Ue0b1", "\Ue0b2", "\Ue0b3"]
-let g:Powerline_symbols_override = { 'BRANCH': "\Ue0a0", 'LINE': "\Ue0a1", 'RO': "\Ue0a2" }
-highlight ColorColumn ctermbg=238 guibg=#2c2d27
+"set rtp+=$HOME/.local/lib/python2.7/dist-packages/powerline/bindings/vim/
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+
+highlight ColorColumn ctermbg=248 guibg=#2c2d27
 let &colorcolumn="80,".join(range(120,999),",")
+
+set t_Co=256
+set background=dark
+colorscheme tropikos
+

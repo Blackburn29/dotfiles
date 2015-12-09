@@ -1,3 +1,4 @@
+let g:NERDTreeShowHidden = 1
 
 function s:NERDTreeConfig()
     NERDTree

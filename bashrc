@@ -5,7 +5,7 @@
 #it is not required, but highly recommneded to have all remaining aspects of this script be relative to DIR.
 DIR="$(cd -P "$(dirname "$(readlink --canonicalize "${BASH_SOURCE[0]}")")" && pwd)"
 
-PS1="\[\033[1;34m\][\u@\h] \W \$\[\033[00m\] "
+PS1="\[\033[1;36m\][\u@\h] \W \$\[\033[00m\] "
 
 export EDITOR="vim"
 export PATH="$PATH:$DIR/bin"
@@ -23,8 +23,3 @@ for dirName in ${scriptDirPaths[@]}; do
         done
     fi
 done
-
-if [ -n "$DISPLAY" -a "$TERM" == "xterm" ]; then
-	export TERM="xterm-256color"
-fi
-
