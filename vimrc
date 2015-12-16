@@ -91,7 +91,7 @@ nnoremap <Leader>j <C-W>j
 nnoremap <Leader>k <C-W>k
 nnoremap <Leader>h <C-W>h
 nnoremap <Leader>l <C-W>l
-nnoremap <Leader>p :set paste!<CR>:set paste?<CR>
+nnoremap <silent> <Leader>p :set paste!<CR>
 nnoremap <Leader>R *:%s///c<Left><Left>
 nnoremap <silent> <Leader><Tab> :b#<CR>
 nnoremap <silent> <Leader>1 :buffer 1<CR>
@@ -166,20 +166,6 @@ function! EEBufferCount()
 endfunction
 
 let g:go_fmt_command = "goimports"
-
-let g:ycm_min_num_of_chars_for_completion = 4
-let g:ycm_echo_current_diagnostic = 0
-let g:ycm_show_diagnostics_ui = 0
-let g:bufferline_rotate = 1
-let g:bufferline_fixed_index = 0
-let g:bufferline_fname_mod = ':t'
-
-"set rtp+=$HOME/.local/lib/python2.7/dist-packages/powerline/bindings/vim/
-let g:airline_left_sep = ''
-let g:airline_left_alt_sep = ''
-let g:airline_right_sep = ''
-let g:airline_right_alt_sep = ''
-
 highlight ColorColumn ctermbg=248 guibg=#2c2d27
 let &colorcolumn="80,".join(range(120,999),",")
 
