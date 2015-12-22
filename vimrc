@@ -87,6 +87,7 @@ nnoremap <Leader>sv :source $MYVIMRC<CR>
 nnoremap <Leader>mks :mksession!<CR>
 nnoremap <Leader>x :wqa<CR>
 nnoremap <Leader>w :retab<CR>:wa<CR>
+nnoremap <silent> <Leader><BS> :bp<bar>sp<bar>bn<bar>bd<CR>
 nnoremap <Leader>j <C-W>j
 nnoremap <Leader>k <C-W>k
 nnoremap <Leader>h <C-W>h
