@@ -19,10 +19,9 @@ Plugin 'blackgate/tropikos-vim-theme'
 Plugin 'kylef/apiblueprint.vim'
 Plugin 'bling/vim-airline'
 Plugin 'scrooloose/syntastic'
-Plugin 'Haron-Prime/evening_vim'
-Plugin 'mhumeSF/one-dark.vim'
-Plugin 'djjcast/mirodark'
-Plugin 'mxw/vim-jsx'
+Plugin 'wakatime/vim-wakatime'
+Plugin 'evidens/vim-twig'
+Plugin 'ctrlpvim/ctrlp.vim'
 "All of Plugins must be added before the following line.
 call vundle#end()
 
@@ -91,8 +90,10 @@ nnoremap <silent> <Leader><BS> :bp<bar>sp<bar>bn<bar>bd<CR>
 nnoremap <Leader>j <C-W>j
 nnoremap <Leader>k <C-W>k
 nnoremap <Leader>h <C-W>h
+nnoremap <Leader>e <C-W>l :e<space>
 nnoremap <Leader>l <C-W>l
 nnoremap <silent> <Leader>p :set paste!<CR>
+nnoremap <leader>bb :buffers<cr>:buffer<space>
 nnoremap <Leader>R *:%s///c<Left><Left>
 nnoremap <silent> <Leader><Tab> :b#<CR>
 nnoremap <silent> <Leader>1 :buffer 1<CR>
@@ -120,6 +121,8 @@ cnoremap kj <C-C>
 
 imap <C-s> <esc>a<Plug>snipMateNextOrTrigger
 smap <C-s> <Plug>snipMateNextOrTrigger
+
+set completeopt=menu,menuone
 
 augroup EnterFileLineReturn
     autocmd!
