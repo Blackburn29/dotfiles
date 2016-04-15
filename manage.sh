@@ -32,6 +32,14 @@ manage_vim() {
     vim +PluginInstall +qall
 }
 
+manage_terminator() {
+    bash ./terminator/manage.sh
+}
+
+manage_i3() {
+    bash ./i3/manage.sh
+}
+
 args="$@"
 if [ "$#" -eq 0 ]; then
     args=( bash vim )
@@ -42,5 +50,9 @@ for arg in ${args[@]}; do
             manage_bash;;
         vim)
             manage_vim;;
+        terminator)
+            manage_terminator;;
+        i3)
+            manage_i3;;
     esac
 done

@@ -5,7 +5,6 @@ function s:NERDTreeConfig()
     if EEBufferCount() !=# 0
         wincmd p
     endif
-    nnoremap <silent> <Leader>nt :NERDTreeToggle<CR>
 endfunction
 
 augroup dotfiles_plugin_nerdtree

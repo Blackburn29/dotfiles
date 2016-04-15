@@ -7,6 +7,7 @@ DIR="$(cd -P "$(dirname "$(readlink --canonicalize "${BASH_SOURCE[0]}")")" && pw
 
 PS1="\[\033[1;36m\][\u@\h] \W \$\[\033[00m\] "
 
+export TERM="xterm-256color"
 export EDITOR="vim"
 export PATH="$PATH:$DIR/bin"
 export PATH="$PATH:/usr/local/go/bin"

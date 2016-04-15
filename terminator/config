@@ -1,0 +1,43 @@
+[global_config]
+  enabled_plugins = LaunchpadCodeURLHandler, APTURLHandler, LaunchpadBugURLHandler
+  title_transmit_bg_color = "#000f80"
+  handle_size = 0
+  inactive_color_offset = 0.74
+[keybindings]
+  switch_to_tab_6 = <Alt>6
+  go_up = <Primary>k
+  switch_to_tab_10 = None
+  switch_to_tab_1 = <Alt>1
+  split_horiz = <Alt>minus
+  switch_to_tab_4 = <Alt>4
+  broadcast_all = <Primary><Shift>Return
+  go_down = <Primary>j
+  switch_to_tab_5 = <Alt>5
+  switch_to_tab_2 = <Alt>2
+  go_right = <Primary>l
+  broadcast_off = <Primary><Alt>Return
+  go_left = <Primary>h
+  split_vert = <Alt>backslash
+  switch_to_tab_3 = <Alt>3
+[profiles]
+  [[default]]
+    use_system_font = False
+    background_image = None
+    foreground_color = "#ffffff"
+    scroll_on_output = False
+    color_scheme = white_on_black
+    font = Monospace 9
+[layouts]
+  [[default]]
+    [[[child0]]]
+      position = 1920:306
+      type = Window
+      order = 0
+      parent = ""
+      size = 636, 1022
+    [[[terminal1]]]
+      profile = default
+      type = Terminal
+      order = 0
+      parent = child0
+[plugins]
