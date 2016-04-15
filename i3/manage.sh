@@ -3,7 +3,7 @@
 
 DIR="$(cd -P "$(dirname "$(readlink --canonicalize "${BASH_SOURCE[0]}")")" && pwd)"
 
-I3_CONFIG_DIR="$HOME/.i3/"
+I3_CONFIG_DIR="$HOME/.config/i3/"
 I3_CONFIG="$I3_CONFIG_DIR/config"
 
 mkdir -p "$I3_CONFIG_DIR"
