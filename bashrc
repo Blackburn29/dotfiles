@@ -13,6 +13,7 @@ export PATH="$PATH:$DIR/bin"
 export PATH="$PATH:/usr/local/go/bin"
 export PATH="$PATH:/opt/android-studio/bin/"
 export PATH="$PATH:/home/blake/Android/Sdk/platform-tools/"
+export PATH="$PATH:/home/blake/pear/bin/"
 export GOPATH="$HOME/Go"
 #source .sh files in the directories listed in the following array.
 scriptDirPaths=("bash" "self")

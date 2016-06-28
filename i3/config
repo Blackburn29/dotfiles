@@ -13,7 +13,7 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below. ISO 10646 = Unicode
-font pango:Monaco 9
+font pango:Monaco, FontAwesome 9
 # The font above is very space-efficient, that is, it looks good, sharp and
 # clear in small sizes. However, if you need a lot of unicode glyphs or
 # right-to-left text rendering, you should instead use pango for rendering and
@@ -26,6 +26,9 @@ floating_modifier $mod
 #Dont let focus change on mouse movement
 focus_follows_mouse no
 
+#Default windows to stack
+workspace_layout stacking
+
 # start a terminal
 bindsym $mod+Return exec terminator
 
@@ -33,10 +36,12 @@ bindsym $mod+Return exec terminator
 exec --no-startup-id nitrogen --restore
 
 # kill focused window
-bindsym $mod+Shift+q kill
+bindsym $mod+x kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec dmenu_run
+#bindsym $mod+d exec dmenu_run
+bindsym $mod+d exec --no-startup-id rofi -show run 
+
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
@@ -47,6 +52,8 @@ bindsym $mod+h focus left
 bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
+
+bindsym  Mod1+Return focus down
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -67,10 +74,10 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # split in horizonhyphental orientation
-bindsym $mod+hyphen split h
+bindsym $mod+n split h
 
 # split in vertical orientation
-bindsym $mod+bar split v
+bindsym $mod+v split v
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen
@@ -134,6 +141,7 @@ mode "resize" {
         bindsym h resize shrink width 10 px or 10 ppt
         bindsym j resize grow height 10 px or 10 ppt
         bindsym k resize shrink height 10 px or 10 ppt
+        bindsym l resize grow width 10 px or 10 ppt
 
 
         # same bindings, but for the arrow keys
@@ -153,20 +161,35 @@ bindsym $mod+minus scratchpad show
 bindsym $mod+r mode "resize"
 
 for_window [class="Xfce4-notifyd"] floating enable;border none; focus mode_toggle
-for_window [class="Software Updater"] floating enable;border none; focus mode_toggle
-for_window [class="Wine"] floating enable
-for_window [class="1Password"] 1Passwordfloating enable
+for_window [class="Software Updater"] floating enable; focus mode_toggle
+#for_window [class="Wine"] floating enable
 for_window [class="Whisker Menu"] floating enable
+for_window [class="Pithos"] floating enable
 for_window [class="Wine System Tray"] move scratchpad
 
 # lock screen
-bindsym $mod+Alt+l exec --no-startup-id i3lock -c 000000
+bindsym $mod+Shift+Escape exec xflock4
 
-# start dmenu (a program launcher)
-bindsym Alt+d exec --no-startup-id  dmenu_run
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        status_command i3status
+  font pango:Monaco, FontAwesome 9
+        status_command conky -c $HOME/.conkyrc
+  colors {
+    separator #969896
+    background #1d1f21
+    statusline #c5c8c6
+    focused_workspace #81a2be #81a2be #1d1f21
+    active_workspace #373b41 #373b41 #ffffff
+    inactive_workspace #282a2e #282a2e #969896
+    urgent_workspace #cc6666 #cc6666 #ffffff
+  }
 }
+
+#colors:                border  backgr. text    indicator
+
+client.focused #81a2be #81a2be #1d1f21 #282a2e
+client.focused_inactive #373b41 #373b41 #969896 #282a2e
+client.unfocused #282a2e #282a2e #969896 #282a2e
+client.urgent #373b41 #cc6666 #ffffff #cc6666

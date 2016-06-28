@@ -1,7 +1,10 @@
 [global_config]
-  enabled_plugins = LaunchpadCodeURLHandler, APTURLHandler, LaunchpadBugURLHandler
+  window_state = maximise
+  handle_size = 1
+  enabled_plugins = ,
+  suppress_multiple_term_dialog = True
+  borderless = True
   title_transmit_bg_color = "#000f80"
-  handle_size = 0
   inactive_color_offset = 0.74
 [keybindings]
   switch_to_tab_6 = <Alt>6
@@ -23,6 +26,7 @@
   [[default]]
     use_system_font = False
     background_image = None
+    cursor_color = "#595454"
     foreground_color = "#ffffff"
     scroll_on_output = False
     color_scheme = white_on_black
@@ -37,7 +41,8 @@
       size = 636, 1022
     [[[terminal1]]]
       profile = default
-      type = Terminal
+      type = HPaned
       order = 0
       parent = child0
+      ratio = 0.4
 [plugins]

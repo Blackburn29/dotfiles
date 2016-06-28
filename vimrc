@@ -10,9 +10,7 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'fatih/vim-go'
 Plugin 'scrooloose/nerdtree'
 Plugin 'bling/vim-bufferline'
-Plugin 'andrwb/vim-lapis256'
 Plugin 'Valloric/YouCompleteMe'
-Plugin 'digitaltoad/vim-jade'
 Plugin 'StanAngeloff/php.vim'
 Plugin 'unblevable/quick-scope'
 Plugin 'blackgate/tropikos-vim-theme'
@@ -22,6 +20,8 @@ Plugin 'scrooloose/syntastic'
 Plugin 'wakatime/vim-wakatime'
 Plugin 'evidens/vim-twig'
 Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'easymotion/vim-easymotion'
+Plugin 'joonty/vdebug'
 "All of Plugins must be added before the following line.
 call vundle#end()
 
@@ -73,6 +73,16 @@ set statusline+=%=
 set statusline+=%l\/%L\ 
 set statusline+=\ \ 
 set laststatus=2
+
+if &term =~ "xterm\\|rxvt"
+    "insert mode
+  let &t_SI = "\<Esc>]12;cyan\007"
+  " default
+  let &t_EI = "\<Esc>]12;grey\x7"
+  " reset cursor when vim exits
+  autocmd VimLeave * silent !echo -ne "\033]112\007"
+  " use \003]12;gray\007 for terminal
+endif
 
 "Mappings.
 let mapleader = " "
