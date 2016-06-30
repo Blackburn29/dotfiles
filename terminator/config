@@ -3,7 +3,6 @@
   handle_size = 1
   enabled_plugins = ,
   suppress_multiple_term_dialog = True
-  borderless = True
   title_transmit_bg_color = "#000f80"
   inactive_color_offset = 0.74
 [keybindings]

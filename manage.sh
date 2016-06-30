@@ -40,6 +40,10 @@ manage_i3() {
     bash ./i3/manage.sh
 }
 
+manage_compton() {
+    bash ./compton/manage.sh
+}
+
 args="$@"
 if [ "$#" -eq 0 ]; then
     args=( bash vim )
@@ -54,5 +58,7 @@ for arg in ${args[@]}; do
             manage_terminator;;
         i3)
             manage_i3;;
+        compton)
+            manage_compton;;
     esac
 done
