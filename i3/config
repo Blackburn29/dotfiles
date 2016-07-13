@@ -159,11 +159,13 @@ bindsym $mod+minus scratchpad show
 
 bindsym $mod+r mode "resize"
 
-for_window [class="Xfce4-notifyd"] floating enable;border none; focus mode_toggle
+no_focus [window_role="pop-up"]
+no_focus [class="xfce4-notifyd"]
+for_window [class="Xfce4-notifyd"] floating enable;border none;
+for_window [class="xfce4-notifyd"] floating enable;border none;
 for_window [class="Software Updater"] floating enable; focus mode_toggle
 #for_window [class="Wine"] floating enable
 for_window [class="Whisker Menu"] floating enable
-for_window [class="Pithos"] floating enable
 for_window [class="Wine System Tray"] move scratchpad
 
 # lock screen
