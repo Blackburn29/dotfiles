@@ -87,6 +87,7 @@ endif
 "Mappings.
 let mapleader = " "
 let maplocalleader = ","
+nnoremap <silent> <LocalLeader>w :w!<CR>
 nnoremap <silent> <C-f> :NERDTreeToggle<CR>
 nnoremap <silent> <Leader>/ :nohlsearch<CR> :let @/=""<CR><Left>
 nnoremap <Leader>C :w<Bar>bp<Bar>sp<Bar>bn<Bar>bd<CR>
