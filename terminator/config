@@ -1,47 +1,52 @@
 [global_config]
-  window_state = maximise
-  handle_size = 1
   enabled_plugins = ,
+  handle_size = 1
+  inactive_color_offset = 0.74
   suppress_multiple_term_dialog = True
   title_transmit_bg_color = "#000f80"
-  inactive_color_offset = 0.74
+  window_state = maximise
 [keybindings]
-  switch_to_tab_6 = <Alt>6
-  go_up = <Primary>k
-  switch_to_tab_10 = None
-  switch_to_tab_1 = <Alt>1
-  split_horiz = <Alt>minus
-  switch_to_tab_4 = <Alt>4
   broadcast_all = <Primary><Shift>Return
-  go_down = <Primary>j
-  switch_to_tab_5 = <Alt>5
-  switch_to_tab_2 = <Alt>2
-  go_right = <Primary>l
   broadcast_off = <Primary><Alt>Return
+  go_down = <Primary>j
   go_left = <Primary>h
+  go_right = <Primary>l
+  go_up = <Primary>k
+  split_horiz = <Alt>minus
   split_vert = <Alt>backslash
+  switch_to_tab_1 = <Alt>1
+  switch_to_tab_10 = None
+  switch_to_tab_2 = <Alt>2
   switch_to_tab_3 = <Alt>3
-[profiles]
-  [[default]]
-    use_system_font = False
-    background_image = None
-    cursor_color = "#595454"
-    foreground_color = "#ffffff"
-    scroll_on_output = False
-    color_scheme = white_on_black
-    font = Monospace 9
+  switch_to_tab_4 = <Alt>4
+  switch_to_tab_5 = <Alt>5
+  switch_to_tab_6 = <Alt>6
 [layouts]
   [[default]]
     [[[child0]]]
-      position = 1920:306
-      type = Window
+      fullscreen = False
+      last_active_term = dc331a77-51c3-4306-bc5f-ae88e658fdfd
+      last_active_window = True
+      maximised = True
       order = 0
       parent = ""
-      size = 636, 1022
+      position = 0:118
+      size = 1916, 846
+      title = /bin/bash
+      type = Window
     [[[terminal1]]]
-      profile = default
-      type = HPaned
       order = 0
       parent = child0
-      ratio = 0.4
+      profile = default
+      type = Terminal
+      uuid = dc331a77-51c3-4306-bc5f-ae88e658fdfd
 [plugins]
+[profiles]
+  [[default]]
+    background_image = None
+    color_scheme = white_on_black
+    cursor_color = "#595454"
+    font = Monospace 9
+    foreground_color = "#ffffff"
+    scroll_on_output = False
+    use_system_font = False
