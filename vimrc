@@ -7,27 +7,31 @@ call vundle#begin()
 "Let Vundle manage Vundle, required! Do not add comment at end of Plugin lines.
 Plugin 'gmarik/Vundle.vim'
 "List Plugins here.
-Plugin 'fatih/vim-go'
 Plugin 'scrooloose/nerdtree'
 Plugin 'bling/vim-bufferline'
 Plugin 'Valloric/YouCompleteMe'
-Plugin 'StanAngeloff/php.vim'
 Plugin 'unblevable/quick-scope'
 Plugin 'blackgate/tropikos-vim-theme'
-Plugin 'kylef/apiblueprint.vim'
 Plugin 'bling/vim-airline'
 Plugin 'scrooloose/syntastic'
-Plugin 'wakatime/vim-wakatime'
-Plugin 'evidens/vim-twig'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'easymotion/vim-easymotion'
-Plugin 'joonty/vdebug'
 "All of Plugins must be added before the following line.
 call vundle#end()
 
 syntax on
 filetype on
 filetype plugin indent on
+
+"Keep menus closed in gVim on startup
+set guioptions-=m  "menu bar
+set guioptions-=T  "toolbar
+set guioptions-=r  "scrollbar
+
+"Allow toggling of the menu bars on gVim
+nnoremap <C-F1> :if &go=~#'m'<Bar>set go-=m<Bar>else<Bar>set go+=m<Bar>endif<CR>
+nnoremap <C-F2> :if &go=~#'T'<Bar>set go-=T<Bar>else<Bar>set go+=T<Bar>endif<CR>
+nnoremap <C-F3> :if &go=~#'r'<Bar>set go-=r<Bar>else<Bar>set go+=r<Bar>endif<CR>
 
 "Config.
 set hidden
