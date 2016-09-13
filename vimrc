@@ -9,7 +9,7 @@ Plugin 'gmarik/Vundle.vim'
 "List Plugins here.
 Plugin 'scrooloose/nerdtree'
 Plugin 'bling/vim-bufferline'
-Plugin 'Valloric/YouCompleteMe'
+Plugin 'Shougo/neocomplete.vim'
 Plugin 'unblevable/quick-scope'
 Plugin 'blackgate/tropikos-vim-theme'
 Plugin 'bling/vim-airline'
@@ -32,6 +32,10 @@ set guioptions-=r  "scrollbar
 nnoremap <C-F1> :if &go=~#'m'<Bar>set go-=m<Bar>else<Bar>set go+=m<Bar>endif<CR>
 nnoremap <C-F2> :if &go=~#'T'<Bar>set go-=T<Bar>else<Bar>set go+=T<Bar>endif<CR>
 nnoremap <C-F3> :if &go=~#'r'<Bar>set go-=r<Bar>else<Bar>set go+=r<Bar>endif<CR>
+
+"Neocomplete
+let g:neocomplete#enable_at_startup = 1
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 
 "Config.
 set hidden
