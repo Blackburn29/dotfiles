@@ -13,9 +13,13 @@ Plugin 'Shougo/neocomplete.vim'
 Plugin 'unblevable/quick-scope'
 Plugin 'blackgate/tropikos-vim-theme'
 Plugin 'bling/vim-airline'
-Plugin 'scrooloose/syntastic'
+Plugin 'w0rp/ale'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'easymotion/vim-easymotion'
+Plugin 'arnaud-lb/vim-php-namespace'
+Plugin 'craigemery/vim-autotag'
+Plugin 'StanAngeloff/php.vim'
+Plugin 'leafgarland/typescript-vim'
 "All of Plugins must be added before the following line.
 call vundle#end()
 
@@ -190,8 +194,43 @@ function! EEBufferCount()
 endfunction
 
 let g:go_fmt_command = "goimports"
-highlight ColorColumn ctermbg=248 guibg=#2c2d27
+highlight ColorColumn ctermbg=234 guibg=#1c1c1c
 let &colorcolumn="80,".join(range(120,999),",")
+
+"ale
+highlight clear ALEErrorSign
+let g:ale_sign_error = '❌'
+let g:ale_sign_warning = '🔧'
+
+"php-namespace
+set tags+=tags,tags.vendors
+function! IPhpExpandClass()
+    call PhpExpandClass()
+    call feedkeys('a', 'n')
+endfunction
+autocmd FileType php noremap <Leader>e :call PhpExpandClass()<CR>
+
+function! IPhpInsertUse()
+    call PhpInsertUse()
+    call feedkeys('a',  'n')
+endfunction
+autocmd FileType php noremap <Leader>u :call PhpInsertUse()<CR>
+autocmd FileType php noremap <Leader>s :call PhpSortUse()<CR>
+
+" The Silver Searcher
+if executable('ag')
+  " Use ag over grep
+  set grepprg=ag\ --nogroup\ --nocolor
+
+  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+
+  " ag is fast enough that CtrlP doesn't need to cache
+  let g:ctrlp_use_caching = 0
+endif
+
+" bind K to grep word under cursor
+nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 
 set t_Co=256
 set background=dark

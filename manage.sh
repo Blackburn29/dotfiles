@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #the following should be the first content line of the script.
-DIR="$(cd -P "$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")" && pwd)"
+DIR="$(cd -P "$(dirname "$(greadlink -f "${BASH_SOURCE[0]}")")" && pwd)"
 
 manage_bash() {
     if [ ! -d "$DIR/self" ]; then
