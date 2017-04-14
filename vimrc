@@ -7,18 +7,23 @@ call vundle#begin()
 "Let Vundle manage Vundle, required! Do not add comment at end of Plugin lines.
 Plugin 'gmarik/Vundle.vim'
 "List Plugins here.
+"UI
 Plugin 'scrooloose/nerdtree'
 Plugin 'bling/vim-bufferline'
-Plugin 'Shougo/neocomplete.vim'
-Plugin 'unblevable/quick-scope'
-Plugin 'blackgate/tropikos-vim-theme'
 Plugin 'bling/vim-airline'
+Plugin 'blackgate/tropikos-vim-theme'
+Plugin 'lifepillar/vim-solarized8'
+"Editing Tools
+Plugin 'Shougo/neocomplete.vim'
 Plugin 'w0rp/ale'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'easymotion/vim-easymotion'
+"PHP
 Plugin 'arnaud-lb/vim-php-namespace'
 Plugin 'craigemery/vim-autotag'
 Plugin 'StanAngeloff/php.vim'
+Plugin 'joonty/vdebug'
+"JavaScript
 Plugin 'leafgarland/typescript-vim'
 "All of Plugins must be added before the following line.
 call vundle#end()
@@ -234,5 +239,5 @@ nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 
 set t_Co=256
 set background=dark
-colorscheme tropikos
+colorscheme solarized8_dark
 
