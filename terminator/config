@@ -1,26 +1,35 @@
 [global_config]
-  enabled_plugins = ,
   handle_size = 1
-  inactive_color_offset = 0.74
-  suppress_multiple_term_dialog = True
-  title_transmit_bg_color = "#000f80"
   window_state = maximise
+  title_transmit_bg_color = "#000f80"
+  inactive_color_offset = 0.74
+  enabled_plugins = ,
+  suppress_multiple_term_dialog = True
 [keybindings]
-  broadcast_all = <Primary><Shift>Return
-  broadcast_off = <Primary><Alt>Return
+  go_up = <Primary>k
   go_down = <Primary>j
   go_left = <Primary>h
   go_right = <Primary>l
-  go_up = <Primary>k
   split_horiz = <Alt>minus
   split_vert = <Alt>backslash
   switch_to_tab_1 = <Alt>1
-  switch_to_tab_10 = None
   switch_to_tab_2 = <Alt>2
   switch_to_tab_3 = <Alt>3
   switch_to_tab_4 = <Alt>4
   switch_to_tab_5 = <Alt>5
   switch_to_tab_6 = <Alt>6
+  switch_to_tab_10 = None
+  broadcast_off = <Primary><Alt>Return
+  broadcast_all = <Primary><Shift>Return
+[profiles]
+  [[default]]
+    background_darkness = 0.89
+    background_type = transparent
+    color_scheme = white_on_black
+    cursor_color = "#595454"
+    font = Hack 9
+    foreground_color = "#ffffff"
+    use_system_font = False
 [layouts]
   [[default]]
     [[[child0]]]
@@ -41,12 +50,3 @@
       type = Terminal
       uuid = dc331a77-51c3-4306-bc5f-ae88e658fdfd
 [plugins]
-[profiles]
-  [[default]]
-    background_image = None
-    color_scheme = white_on_black
-    cursor_color = "#595454"
-    font = Monospace 9
-    foreground_color = "#ffffff"
-    scroll_on_output = False
-    use_system_font = False

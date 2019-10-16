@@ -1,6 +1,11 @@
 
 #!/bin/bash
 
+if ! [ -x "$(command -v compton)" ]; then
+  echo 'Error: Compton is not installed.' >&2
+  exit 0
+fi
+
 DIR="$(cd -P "$(dirname "$(readlink --canonicalize "${BASH_SOURCE[0]}")")" && pwd)"
 
 COMPTON_CONFIG_DIR="$HOME/.config"
