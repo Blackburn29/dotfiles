@@ -10,17 +10,27 @@
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
 set $mod Mod4
+font pango:Hack, unifont, FontAwesome 9
 
-exec --no-startup-id compton --opacity-rule '100:window_type = "dock" && class_g = "i3bar"' --config ~/.config/compton.conf -b
+exec --no-startup-id compton -C &
+exec --no-startup-id conky &
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
-# Font for window titles. Will also be used by the bar unless a different font
-# is used in the bar {} block below. ISO 10646 = Unicode
-font pango:Monaco, FontAwesome 9
-# The font above is very space-efficient, that is, it looks good, sharp and
-# clear in small sizes. However, if you need a lot of unicode glyphs or
-# right-to-left text rendering, you should instead use pango for rendering and
-# chose a FreeType font, such as:
-# font pango:DejaVu Sans Mono 10
+#
+# # Pulse Audio controls
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+
+# Sreen brightness controls
+bindsym XF86MonBrightnessUp exec light -A 10 # increase screen brightness
+bindsym XF86MonBrightnessDown exec light -U 10 # decrease screen brightness
+
+# Media player controls
+bindsym XF86AudioPlay exec playerctl play
+bindsym XF86AudioPause exec playerctl pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -37,24 +47,13 @@ bindsym $mod+Return exec terminator
 # kill focused window
 bindsym $mod+x kill
 
-# start dmenu (a program launcher)
-#bindsym $mod+d exec dmenu_run
-bindsym $mod+d exec --no-startup-id rofi -show run 
-
-# There also is the (new) i3-dmenu-desktop which only displays applications
-# shipping a .desktop file. It is a wrapper around dmenu, so you need that
-# installed.
-# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+bindsym $mod+grave exec --no-startup-id rofi -show run
 
 # change focus
 bindsym $mod+h focus left
 bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
-
-bindsym  Mod1+Return focus down
-
-# alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
@@ -65,8 +64,6 @@ bindsym $mod+Shift+h move left
 bindsym $mod+Shift+j move down
 bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
-
-# alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
@@ -82,7 +79,7 @@ bindsym $mod+v split v
 bindsym $mod+f fullscreen
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
+bindsym $mod+q layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
@@ -96,7 +93,7 @@ bindsym $mod+Shift+space focus mode_toggle
 bindsym $mod+a focus parent
 
 # focus the child container
-#bindsym $mod+d focus child
+bindsym $mod+d focus child
 
 # switch to workspace
 bindsym $mod+1 workspace 1
@@ -109,6 +106,10 @@ bindsym $mod+7 workspace 7
 bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10
+
+#Cycle workspaces
+bindsym Mod1+Tab workspace next
+bindsym Mod1+Shift+Tab workspace next
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace 1
@@ -164,29 +165,31 @@ no_focus [class="xfce4-notifyd"]
 for_window [class="Xfce4-notifyd"] floating enable;border none;
 for_window [class="xfce4-notifyd"] floating enable;border none;
 for_window [class="Software Updater"] floating enable; focus mode_toggle
-#for_window [class="Wine"] floating enable
+for_window [class="Wine"] floating enable
 for_window [class="Whisker Menu"] floating enable
+for_window [class="Evolution-alarm-notify" instance="evolution-alarm-notify"] floating enable
+for_window [class="Xfce4-appfinder" instance="xfce4-appfinder"] floating enable, resize set 400px 400px, move position center
+for_window [class="xfreerdp" instance="xfreerdp"] floating enable, resize set 399px 400px, move position center
 for_window [class="Wine System Tray"] move scratchpad
 
 # lock screen
 bindsym $mod+Shift+Escape exec xflock4
 
-
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
-bar {
-  font pango:Monaco, FontAwesome 9
-        status_command conky -c $HOME/.conkyrc
-  colors {
-    separator #969896
-    background #1d1f21
-    statusline #c5c8c6
-    focused_workspace #81a2be #81a2be #1d1f21
-    active_workspace #373b41 #373b41 #ffffff
-    inactive_workspace #282a2e #282a2e #969896
-    urgent_workspace #cc6666 #cc6666 #ffffff
-  }
-}
+#bar {
+#  font pango:Hack, FontAwesome 9
+#        status_command conky -c $HOME/.conkyrc
+#  colors {
+#    separator #969896
+#    background #1d1f21
+#    statusline #c5c8c6
+#    focused_workspace #81a2be #81a2be #1d1f21
+#    active_workspace #373b41 #373b41 #ffffff
+#    inactive_workspace #282a2e #282a2e #969896
+#    urgent_workspace #cc6666 #cc6666 #ffffff
+#  }
+#}
 
 #colors:                border  backgr. text    indicator
 

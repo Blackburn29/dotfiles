@@ -55,6 +55,10 @@ manage_conky() {
     bash ./conky/manage.sh
 }
 
+manage_polybar() {
+    bash ./polybar/manage.sh
+}
+
 args="$@"
 if [ "$#" -eq 0 ]; then
     args=( bash vim )
@@ -68,10 +72,13 @@ for arg in ${args[@]}; do
         terminator)
             manage_terminator;;
         i3)
-            manage_i3;;
+            manage_i3;
+            manage_polybar;;
         compton)
             manage_compton;;
         conky)
             manage_conky;;
+        polybar)
+            manage_polybar;;
     esac
 done

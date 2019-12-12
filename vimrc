@@ -10,6 +10,7 @@ Plugin 'gmarik/Vundle.vim'
 "UI
 Plugin 'itchyny/lightline.vim'
 Plugin 'blueshirts/darcula'
+Plugin 'scrooloose/nerdtree'
 "Editing Tools
 Plugin 'Shougo/deoplete.nvim'
 Plugin 'dense-analysis/ale'
@@ -34,12 +35,13 @@ nnoremap <C-F2> :if &go=~#'T'<Bar>set go-=T<Bar>else<Bar>set go+=T<Bar>endif<CR>
 nnoremap <C-F3> :if &go=~#'r'<Bar>set go-=r<Bar>else<Bar>set go+=r<Bar>endif<CR>
 
 "Netrw
-let g:netrw_banner = 0
-let g:netrw_liststyle = 3
-let g:netrw_browse_split = 4
-let g:netrw_altv = 1
-let g:netrw_winsize = 20
-nnoremap <silent> <C-f> :Lexplore<CR>
+"let g:netrw_banner = 0
+"let g:netrw_liststyle = 3
+"let g:netrw_browse_split = 4
+"let g:netrw_altv = 1
+"let g:netrw_winsize = 20
+"nnoremap <silent> <C-f> :Lexplore<CR>
+nnoremap <silent> <C-f> :NERDTreeToggle<CR>
 
 "Deoplete
 let g:deoplete#enable_at_startup = 1
