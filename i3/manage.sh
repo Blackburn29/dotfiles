@@ -8,7 +8,7 @@ I3_CONFIG="$I3_CONFIG_DIR/config"
 
 sudo add-apt-repository ppa:kgilmer/speed-ricer -y && \
     sudo apt-get update && \
-    sudo apt-get install i3
+    sudo apt-get install i3 rofi
 
 mkdir -p "$I3_CONFIG_DIR"
 

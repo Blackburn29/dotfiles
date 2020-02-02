@@ -10,17 +10,17 @@
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
 set $mod Mod4
-font pango:Hack, unifont, FontAwesome 9
+font pango:Hack, unifont, Font Awesome 5 Free 9
 
-exec --no-startup-id compton -C &
-exec --no-startup-id conky &
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+exec_always --no-startup-id killall conky && sleep 1 && conky -c ~/.config/conky/conky.conf
+exec --no-startup-id $HOME/.config/polybar/launch.sh &
+exec --no-startup-id nitrogen --restore
+exec --no-startup-id compton
 
-#
 # # Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+#bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
+#bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
+#bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
 
 # Sreen brightness controls
 bindsym XF86MonBrightnessUp exec light -A 10 # increase screen brightness
@@ -47,7 +47,7 @@ bindsym $mod+Return exec terminator
 # kill focused window
 bindsym $mod+x kill
 
-bindsym $mod+grave exec --no-startup-id rofi -show run
+bindsym $mod+grave exec --no-startup-id rofi -show drun
 
 # change focus
 bindsym $mod+h focus left
@@ -70,10 +70,10 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # split in horizonhyphental orientation
-bindsym $mod+n split h
+bindsym $mod+minus split v
 
 # split in vertical orientation
-bindsym $mod+v split v
+bindsym $mod+bar split h
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen
@@ -155,8 +155,8 @@ mode "resize" {
         bindsym Escape mode "default"
 }
 
-bindsym $mod+Shift+minus move scratchpad
-bindsym $mod+minus scratchpad show
+bindsym $mod+Shift+backslash move scratchpad
+bindsym $mod+backslash scratchpad show
 
 bindsym $mod+r mode "resize"
 
@@ -170,6 +170,9 @@ for_window [class="Whisker Menu"] floating enable
 for_window [class="Evolution-alarm-notify" instance="evolution-alarm-notify"] floating enable
 for_window [class="Xfce4-appfinder" instance="xfce4-appfinder"] floating enable, resize set 400px 400px, move position center
 for_window [class="xfreerdp" instance="xfreerdp"] floating enable, resize set 399px 400px, move position center
+for_window [class="Steam" instance="Steam"] floating enable
+for_window [title="Android Emulator -"] floating enable
+for_window [title="win0"] floating enable, move position center
 for_window [class="Wine System Tray"] move scratchpad
 
 # lock screen
