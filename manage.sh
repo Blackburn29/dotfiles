@@ -59,6 +59,10 @@ manage_polybar() {
     bash ./polybar/manage.sh
 }
 
+manage_rofi() {
+    bash ./rofi/manage.sh
+}
+
 args="$@"
 if [ "$#" -eq 0 ]; then
     args=( bash vim )
@@ -73,12 +77,15 @@ for arg in ${args[@]}; do
             manage_terminator;;
         i3)
             manage_i3;
-            manage_polybar;;
+            manage_polybar;
+            manage_rofi;;
         compton)
             manage_compton;;
         conky)
             manage_conky;;
         polybar)
             manage_polybar;;
+        rofi)
+            manage_rofi;;
     esac
 done

@@ -1,0 +1,10 @@
+configuration {
+    modi: "run,combi,window,drun";
+    combi-modi: "window,drun,run";
+    show-icons: true;
+    terminal: "terminator";
+    sidebar-mode: true;
+    theme: "slate";
+    //levenshtein-sort: true;
+    sort: true;
+}
