@@ -1,6 +1,6 @@
 configuration {
-    modi: "run,combi,window,drun";
-    combi-modi: "window,drun,run";
+    modi: "run,combi,drun";
+    combi-modi: "drun,run";
     show-icons: true;
     terminal: "terminator";
     sidebar-mode: true;

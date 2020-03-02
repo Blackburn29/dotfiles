@@ -16,10 +16,13 @@ primary = #E06C75
 secondary = #98c379
 black = #000000
 purple = #c678dd
+white = #ffffff
 3 = #d19a66
-4 = #61aeee
+;4 = #61aeee
+4 = #62afee
 5 = #c678dd
-6 = #56b6c2
+;6 = #56b6c2
+6 = #62afee
 7 = #abb2bf
 8 = #5c6370
 9 = #e06c75
@@ -80,7 +83,7 @@ type = custom/text
 content = " "
 content-font = 2
 content-margin-bottom = 800
-content-foreground = ${colors.9}
+content-foreground = ${colors.12}
 content-background = ${colors.background-alt}
 
 [module/arrowleft9]
@@ -90,7 +93,7 @@ content = " "
 content-font = 2
 content-margin-bottom = 800
 content-foreground = ${colors.background-alt}
-content-background = ${colors.9}
+content-background = ${colors.12}
 
 [global/wm]
 margin-top = 5
@@ -123,14 +126,14 @@ underline-color = #00f
 ; module-margin-left = 0
 ; module-margin-right = 0
 
-font-0 = Hack:pixelsize=10:weight=bold;2
+font-0 = Hack:pixelsize=10:;2
 font-1 = Hack:pixelsize=32;6
 font-2 = Unifont:style=Medium;2
 font-3 = Font Awesome 5 Free:style=Solid;3
 
 modules-left = i3 arrowright4 xwindow arrowright6
 modules-center = spotify previous playpause next
-modules-right = arrowleft6 battery arrowleft7 cpu memory temperature arrowleft8 date arrowleft9 backlight pulseaudio powermenu
+modules-right = arrowleft6 battery arrowleft7 cpu memory temperature arrowleft8 date arrowleft9 backlight alsa powermenu
 
 tray-position = ${env:TRAY}
 tray-detached = false
@@ -323,7 +326,7 @@ format-prefix-foreground = ${colors.foreground-alt}
 ; format-underline = #c678dd
 
 label = "%date% %time%"
-label-background = ${colors.9}
+label-background = ${colors.12}
 label-foreground = ${colors.black}
 
 [module/backlight]
@@ -385,8 +388,8 @@ format-full-prefix-foreground = ${colors.13}
 format-full-background = ${colors.6}
 format-full-foreground = ${colors.black}
 
-label-charging = "%percentage%% "
-label-discharging = "%percentage%% (%time%) "
+label-charging = "%percentage%%"
+label-discharging = "%percentage%% (%time%)"
 
 ramp-capacity-0 = 
 ramp-capacity-1 = 
@@ -404,34 +407,34 @@ animation-charging-framerate = 750
 
 [module/temperature]
 type = internal/temperature
-thermal-zone = 8
+thermal-zone = 1
 base-temperature = 20
 warn-temperature = 70
 
-format = <ramp> <label>
-;format-underline = ${colors.11}
-format-warn = <ramp> <label-warn>
-; format-warn-underline = ${self.format-underline}
+format = <ramp><label>
+format-warn = <ramp><label-warn>
 format-background = ${colors.background-alt}
 label-background = ${colors.background-alt}
 
-label =  %temperature-c%
-label-warn = %temperature-c%
+label =  " %temperature-c%"
+label-warn = " %temperature-c%"
 label-warn-foreground = ${colors.primary}
+label-warn-background = ${colors.background-alt}
 ramp-0 = 
 ramp-1 = 
 ramp-2 = 
 ramp-foreground = ${colors.foreground-alt}
+ramp-background = ${colors.background-alt}
 
 [module/powermenu]
 type = custom/menu
 
 format-spacing = 1
 
-label-open = 
+label-open = "  "
 label-open-foreground = ${colors.primary}
 label-open-background = ${colors.background-alt}
-label-close =  cancel
+label-close =  " cancel"
 label-close-foreground = ${colors.primary}
 label-close-background = ${colors.background-alt}
 label-separator = |
@@ -442,16 +445,19 @@ menu-0-0 = reboot
 menu-0-0-exec = menu-open-1
 menu-0-1 = power off
 menu-0-1-exec = menu-open-2
+menu-0-1-background = ${colors.background-alt}
 
 menu-1-0 = cancel
 menu-1-0-exec = menu-open-0
 menu-1-1 = reboot
 menu-1-1-exec = sudo reboot
+menu-1-1-background = ${colors.background-alt}
 
 menu-2-0 = power off
 menu-2-0-exec = sudo poweroff
 menu-2-1 = cancel
 menu-2-1-exec = menu-open-0
+menu-2-1-background = ${colors.background-alt}
 
 [module/spotify]
 type = custom/script
@@ -461,3 +467,30 @@ format = <label>
 exec-if = "pgrep spotify"
 exec = python /home/blake/polybar-spotify-controls/scripts/spotify/spotify_status.py -f '{artist}: {song}'
 format-underline = #1db954
+
+[module/alsa]
+type = internal/alsa
+
+master-soundcard = default
+speaker-soundcard = default
+headphone-soundcard = default
+
+format-volume = <ramp-volume><label-volume>
+label = "%percentage%% "
+label-muted = "Muted"
+label-muted-foreground = ${colors.9}
+
+ramp-volume-0 = " "
+ramp-volume-1 = " "
+ramp-volume-2 = " "
+
+label-volume-background = ${colors.background-alt}
+ramp-volume-background = ${colors.background-alt}
+
+label-muted-background = ${colors.background-alt}
+
+master-mixer = Master
+mapped = false
+interval = 5
+scroll-up = amixer set Master 10%+
+scroll-down = amixer set Master 10%-

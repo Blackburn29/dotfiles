@@ -7,9 +7,11 @@ POLYBAR_CONFIG_DIR="$HOME/.config/polybar/"
 POLYBAR_CONFIG="$POLYBAR_CONFIG_DIR/config"
 POLYBAR_LAUNCH="$POLYBAR_CONFIG_DIR/launch.sh"
 
-sudo add-apt-repository ppa:kgilmer/speed-ricer -y && \
-    sudo apt-get update && \
-    sudo apt-get install polybar
+if test -f "/etc/debian_version"; then
+    sudo add-apt-repository ppa:kgilmer/speed-ricer -y && \
+        sudo apt-get update && \
+        sudo apt-get install polybar
+fi
 
 mkdir -p "$POLYBAR_CONFIG_DIR"
 

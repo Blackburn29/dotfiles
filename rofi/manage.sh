@@ -11,8 +11,14 @@ DIR="$(cd -P "$(dirname "$(readlink --canonicalize "${BASH_SOURCE[0]}")")" && pw
 ROFI_CONFIG_DIR="$HOME/.config/rofi"
 ROFI_CONFIG="$ROFI_CONFIG_DIR/rofi.rasi"
 
+if test -f "/etc/debian_version"; then
+    sudo add-apt-repository ppa:kgilmer/speed-ricer -y && \
+        sudo apt-get update && \
+        sudo apt-get install rofi
+fi
+
 mkdir -p "$ROFI_CONFIG_DIR"
 
 if [ ! -h "$ROFI_CONFIG" ]; then
-    ln -fs "$DIR/rofi.rasi" "$ROFI_CONFIG_DIR"
+    ln -fs "$DIR/config.rasi" "$ROFI_CONFIG_DIR"
 fi

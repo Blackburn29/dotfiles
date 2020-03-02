@@ -13,13 +13,13 @@ set $mod Mod4
 font pango:Hack, unifont, Font Awesome 5 Free 9
 
 exec_always --no-startup-id killall conky; sleep 1 && conky -c ~/.config/conky/conky.conf
-exec --no-startup-id $HOME/.config/polybar/launch.sh &
-exec --no-startup-id nitrogen --restore
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh &
+exec_always --no-startup-id nitrogen --restore
 exec --no-startup-id compton -b
 
 # Sreen brightness controls
-bindsym XF86MonBrightnessUp exec light -A 10 # increase screen brightness
-bindsym XF86MonBrightnessDown exec light -U 10 # decrease screen brightness
+#bindsym XF86MonBrightnessUp exec light -A 10 # increase screen brightness
+#bindsym XF86MonBrightnessDown exec light -U 10 # decrease screen brightness
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
