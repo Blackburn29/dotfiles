@@ -4,7 +4,7 @@ configuration {
     show-icons: true;
     terminal: "terminator";
     sidebar-mode: true;
-    theme: "slate";
+    theme: ".config/rofi/slate";
     //levenshtein-sort: true;
     sort: true;
 }
