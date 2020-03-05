@@ -10,6 +10,7 @@ DIR="$(cd -P "$(dirname "$(readlink --canonicalize "${BASH_SOURCE[0]}")")" && pw
 
 ROFI_CONFIG_DIR="$HOME/.config/rofi"
 ROFI_CONFIG="$ROFI_CONFIG_DIR/rofi.rasi"
+ROFI_THEME="$ROFI_CONFIG_DIR/slate.rasi"
 
 if test -f "/etc/debian_version"; then
     sudo add-apt-repository ppa:kgilmer/speed-ricer -y && \
@@ -21,4 +22,5 @@ mkdir -p "$ROFI_CONFIG_DIR"
 
 if [ ! -h "$ROFI_CONFIG" ]; then
     ln -fs "$DIR/config.rasi" "$ROFI_CONFIG_DIR"
+    ln -fs "$DIR/slate.rasi" "$ROFI_THEME"
 fi
