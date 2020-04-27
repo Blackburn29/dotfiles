@@ -12,6 +12,8 @@ manage_bash() {
     if ! grep -q "source.*$DIR/bashrc" ~/.bashrc; then
         echo -e "\nsource $DIR/bashrc\n" >> ~/.bashrc
     fi
+
+    ln -sf $DIR/Xresources $HOME/.Xresources
 }
 
 manage_vim() {

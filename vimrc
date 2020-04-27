@@ -10,6 +10,7 @@ Plugin 'gmarik/Vundle.vim'
 "UI
 Plugin 'itchyny/lightline.vim'
 Plugin 'blueshirts/darcula'
+Plugin 'KeitaNakamura/neodark.vim'
 Plugin 'scrooloose/nerdtree'
 "Editing Tools
 Plugin 'Shougo/deoplete.nvim'
@@ -42,6 +43,9 @@ nnoremap <C-F3> :if &go=~#'r'<Bar>set go-=r<Bar>else<Bar>set go+=r<Bar>endif<CR>
 "let g:netrw_winsize = 20
 "nnoremap <silent> <C-f> :Lexplore<CR>
 nnoremap <silent> <C-f> :NERDTreeToggle<CR>
+
+let g:neodark#use_256color = 1
+let g:neodark#terminal_transparent = 1
 
 "Deoplete
 let g:deoplete#enable_at_startup = 1
@@ -92,9 +96,6 @@ let mapleader = " "
 let maplocalleader = ","
 nnoremap <silent> <LocalLeader>w :w!<CR>
 nnoremap <silent> <Leader>/ :nohlsearch<CR> :let @/=""<CR><Left>
-nnoremap <Leader>C :w<Bar>bp<Bar>sp<Bar>bn<Bar>bd<CR>
-nnoremap <Leader>o o<Esc>
-nnoremap <Leader>O O<Esc>
 nnoremap <Leader>ev :split $MYVIMRC<CR>
 nnoremap <Leader>sv :source $MYVIMRC<CR>
 nnoremap <Leader>x :wqa<CR>
@@ -103,27 +104,17 @@ nnoremap <silent> <Leader><BS> :bp<bar>sp<bar>bn<bar>bd<CR>
 nnoremap <Leader>j <C-W>j
 nnoremap <Leader>k <C-W>k
 nnoremap <Leader>h <C-W>h
-nnoremap <Leader>e <C-W>l :e<space>
 nnoremap <Leader>l <C-W>l
 nnoremap <silent> <Leader>p :set paste!<CR>
 nnoremap <leader>bb :buffers<cr>:buffer<space>
 nnoremap <silent> <Leader><Tab> :b#<CR>
-nnoremap <silent> <Leader>1 :buffer 1<CR>
-nnoremap <silent> <Leader>2 :buffer 2<CR>
-nnoremap <silent> <Leader>3 :buffer 3<CR>
-nnoremap <silent> <Leader>4 :buffer 4<CR>
-nnoremap <silent> <Leader>5 :buffer 5<CR>
-nnoremap <silent> <Leader>6 :buffer 6<CR>
-nnoremap <silent> <Leader>7 :buffer 7<CR>
-nnoremap <silent> <Leader>8 :buffer 8<CR>
 nnoremap <silent> <Leader>c "+yy
 vnoremap <silent> <Leader>c "+y
-inoremap kj <Esc>
-nnoremap <silent> <S-H> :bN<CR>
-nnoremap <silent> <S-L> :bn<CR>
 nnoremap _ ddp
 nnoremap - ddkP
 cnoremap kj <C-C>
+inoremap kj <Esc>
+
 
 set completeopt=menu,menuone
 
@@ -164,9 +155,8 @@ function! EEBufferCount()
     return len(filter(range(1, bufnr("$")), 'buflisted(v:val)'))
 endfunction
 
-"Line Warnings
-highlight ColorColumn ctermbg=234 guibg=#1c1c1c
-let &colorcolumn="80,".join(range(120,999),",")
+set t_Co=256
+set background=dark
 
 "ale
 highlight clear ALEErrorSign
@@ -185,14 +175,13 @@ if executable('ag')
   let g:ctrlp_use_caching = 0
 endif
 
-" bind K to grep word under cursor
-nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
-
-set t_Co=256
-set background=dark
-
 try
-    colorscheme darcula
+    colorscheme neodark
 catch
 endtry
 
+"Line Warnings - Set after theme to override
+highlight ColorColumn ctermbg=233 guibg=#1c1c1c
+highlight CursorLine ctermbg=233 guibg=#1c1c1c
+"let &colorcolumn="80,".join(range(120,999),",")
+set colorcolumn=120

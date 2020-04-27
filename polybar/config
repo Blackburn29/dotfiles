@@ -407,7 +407,7 @@ animation-charging-framerate = 750
 
 [module/temperature]
 type = internal/temperature
-thermal-zone = 1
+thermal-zone = 2
 base-temperature = 20
 warn-temperature = 70
 

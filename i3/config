@@ -31,7 +31,7 @@ focus_follows_mouse no
 workspace_layout stacking
 
 # start a terminal
-bindsym $mod+Return exec terminator
+bindsym $mod+Return exec urxvt
 
 # kill focused window
 bindsym $mod+x kill
@@ -161,7 +161,7 @@ for_window [class="Wine"] floating enable
 for_window [class="Whisker Menu"] floating enable
 for_window [class="Evolution-alarm-notify" instance="evolution-alarm-notify"] floating enable
 for_window [class="Xfce4-appfinder" instance="xfce4-appfinder"] floating enable, resize set 400px 400px, move position center
-for_window [class="xfreerdp" instance="xfreerdp"] floating enable, resize set 399px 400px, move position center
+for_window [class="xfreerdp" instance="xfreerdp"] floating enable, resize set 399px 400px, move position center, border pixel 3
 for_window [class="Steam" instance="Steam"] floating enable
 for_window [title="Android Emulator -"] floating enable
 for_window [title="win0"] floating enable, move position center
