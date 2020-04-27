@@ -151,13 +151,17 @@ bindsym $mod+backslash scratchpad show
 
 bindsym $mod+r mode "resize"
 
+# move focused workspace between monitors
+bindsym $mod+Ctrl+greater move workspace to output right
+bindsym $mod+Ctrl+less move workspace to output left
+
 no_focus [window_role="pop-up"]
 no_focus [class="xfce4-notifyd"]
 for_window [class=".*"] border pixel 0
 for_window [class="Xfce4-notifyd"] floating enable;border none;
 for_window [class="xfce4-notifyd"] floating enable;border none;
 for_window [class="Software Updater"] floating enable; focus mode_toggle
-for_window [class="Wine"] floating enable
+#for_window [class="Wine"] floating enable
 for_window [class="Whisker Menu"] floating enable
 for_window [class="Evolution-alarm-notify" instance="evolution-alarm-notify"] floating enable
 for_window [class="Xfce4-appfinder" instance="xfce4-appfinder"] floating enable, resize set 400px 400px, move position center
@@ -166,6 +170,11 @@ for_window [class="Steam" instance="Steam"] floating enable
 for_window [title="Android Emulator -"] floating enable
 for_window [title="win0"] floating enable, move position center
 for_window [class="Wine System Tray"] move scratchpad
+
+#Window Assignments
+assign [class="Slack"] 4
+assign [class="Evolution"] 4
+assign [class="TelegramDesktop"] 4
 
 # i3-gaps
 gaps inner 4
