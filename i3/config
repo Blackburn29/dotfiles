@@ -170,6 +170,7 @@ for_window [class="Steam" instance="Steam"] floating enable
 for_window [title="Android Emulator -"] floating enable
 for_window [title="win0"] floating enable, move position center
 for_window [class="Wine System Tray"] move scratchpad
+for_window [class="^jetbrains-.+"][window_type=dialog] focus
 
 #Window Assignments
 assign [class="Slack"] 4

@@ -14,6 +14,10 @@ manage_bash() {
     fi
 
     ln -sf $DIR/Xresources $HOME/.Xresources
+
+    if [ -x "$(command xrdb)" ]; then
+        xrdb $HOME/.Xresources
+    fi
 }
 
 manage_vim() {
