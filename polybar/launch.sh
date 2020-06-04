@@ -12,6 +12,9 @@ if type "xrandr" > /dev/null; then
     if [ "$m" = "eDP-1-1" ]; then
         tray="right"
     fi
+    if [ "$m" = "DP-1" ]; then
+        tray="right"
+    fi
     if [ "$m" = "HDMI1" ]; then
         tray="right"
     fi

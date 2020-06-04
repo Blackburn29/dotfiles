@@ -465,7 +465,7 @@ interval = 1
 format-prefix = " "
 format = <label>
 exec-if = "pgrep spotify"
-exec = python /home/blake/polybar-spotify-controls/scripts/spotify/spotify_status.py -f '{artist}: {song}'
+exec = python2 /home/blake/polybar-spotify-controls/scripts/spotify/spotify_status.py -f '{artist}: {song}'
 format-underline = #1db954
 
 [module/alsa]
