@@ -57,6 +57,10 @@ manage_compton() {
     bash ./compton/manage.sh
 }
 
+manage_picom() {
+    bash ./picom/manage.sh
+}
+
 manage_conky() {
     bash ./conky/manage.sh
 }
@@ -87,6 +91,8 @@ for arg in ${args[@]}; do
             manage_rofi;;
         compton)
             manage_compton;;
+        picom)
+            manage_picom;;
         conky)
             manage_conky;;
         polybar)
