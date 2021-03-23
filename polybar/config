@@ -133,7 +133,7 @@ font-3 = Font Awesome 5 Free:style=Solid;3
 
 modules-left = i3 arrowright4 xwindow arrowright6
 modules-center = spotify previous playpause next
-modules-right = arrowleft6 battery arrowleft7 cpu memory temperature arrowleft8 date arrowleft9 backlight alsa powermenu
+modules-right = arrowleft6 battery headset arrowleft7 cpu memory temperature arrowleft8 date arrowleft9 backlight alsa powermenu
 
 tray-position = ${env:TRAY}
 tray-detached = false
@@ -177,13 +177,15 @@ type = internal/fs
 interval = 25
 
 mount-0 = /
-mount-1 = /home
-mount-2 = /invalid/mountpoint
+mount-1 = /var
+mount-2 = /home
 
-label-mounted = %mountpoint%: %percentage_free%%
-
-label-unmounted = %mountpoint%: not mounted
+spacing = 0
+label-mounted = "  %mountpoint%%{F-}: %percentage_used%%"
+label-mounted-background = ${colors.background-alt}
+label-unmounted = (%mountpoint%)
 label-unmounted-foreground = ${colors.foreground-alt}
+
 
 [module/bspwm]
 type = internal/bspwm
@@ -260,7 +262,7 @@ toggle-off-foreground = #66
 [module/cpu]
 type = internal/cpu
 interval = 2
-format-prefix = " "
+format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
 ; format-underline = ${colors.primary}
 label = "%percentage%%  "
@@ -271,7 +273,7 @@ label-background = ${colors.background-alt}
 type = internal/memory
 interval = 2
 format-prefix = " "
-format-prefix-foreground = ${colors.foreground}
+format-prefix-foreground = ${colors.foreground-alt}
 ;format-underline = ${colors.secondary}
 label = "%percentage_used%%  "
 format-background = ${colors.background-alt}
@@ -321,8 +323,9 @@ date-alt =
 time = %H:%M
 time-alt = %H:%M
 
-format-prefix = 
-format-prefix-foreground = ${colors.foreground-alt}
+format-prefix = 
+format-prefix-background = ${colors.12}
+format-prefix-foreground = ${colors.black}
 ; format-underline = #c678dd
 
 label = "%date% %time%"
@@ -364,7 +367,7 @@ ramp-volume-0 = 🔈
 ramp-volume-1 = 🔉
 ramp-volume-2 = 🔊
 
-click-right = pavucontrol &
+click-right = pavucontrol
 ; click-middle =
 
 [module/battery]
@@ -467,6 +470,16 @@ format = <label>
 exec-if = "pgrep spotify"
 exec = python2 /home/blake/polybar-spotify-controls/scripts/spotify/spotify_status.py -f '{artist}: {song}'
 format-underline = #1db954
+
+[module/headset]
+type = custom/script
+interval = 10
+format-prefix = "  "
+label = %output%%
+format-background = ${colors.6}
+format-foreground = ${colors.black}
+exec-if = "/usr/bin/headsetcontrol -b"
+exec = "/usr/bin/headsetcontrol -b -c"
 
 [module/alsa]
 type = internal/alsa
