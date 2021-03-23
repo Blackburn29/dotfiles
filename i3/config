@@ -15,7 +15,6 @@ font pango:Hack, unifont, Font Awesome 5 Free 9
 exec_always --no-startup-id killall conky; sleep 1 && conky -c ~/.config/conky/conky.conf
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh &
 exec_always --no-startup-id nitrogen --restore
-exec --no-startup-id compton -b
 
 # Sreen brightness controls
 #bindsym XF86MonBrightnessUp exec light -A 10 # increase screen brightness
@@ -31,7 +30,8 @@ focus_follows_mouse no
 workspace_layout stacking
 
 # start a terminal
-bindsym $mod+Return exec urxvt
+#bindsym $mod+Return exec urxvt
+bindsym $mod+Return exec termite
 
 # kill focused window
 bindsym $mod+x kill
@@ -175,7 +175,9 @@ for_window [class="^jetbrains-.+"][window_type=dialog] focus
 #Window Assignments
 assign [class="Slack"] 4
 assign [class="Evolution"] 4
+assign [class="discord"] 4
 assign [class="TelegramDesktop"] 4
+assign [class="Spotify"] 5
 
 # i3-gaps
 gaps inner 4

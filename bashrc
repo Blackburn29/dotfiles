@@ -10,7 +10,7 @@ export EDITOR="vim"
 export PATH="$PATH:$DIR/bin:$HOME/.local/bin"
 
 #source .sh files in the directories listed in the following array.
-scriptDirPaths=("bash" "self")
+scriptDirPaths=("bash")
 for dirName in ${scriptDirPaths[@]}; do
     if [ -d "$DIR/$dirName" ]; then
         #because DIR is absolute, filePath will be absolute, thus the source line.
