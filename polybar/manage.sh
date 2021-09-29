@@ -15,6 +15,9 @@ fi
 
 mkdir -p "$POLYBAR_CONFIG_DIR"
 
+curl "https://raw.githubusercontent.com/marioortizmanero/polybar-pulseaudio-control/master/pulseaudio-control.bash" > "$POLYBAR_CONFIG_DIR/pulseaudio-control.sh" &&
+    chmod +x "$POLYBAR_CONFIG_DIR/pulseaudio-control.sh"
+
 if [ ! -h "$POLYBAR_CONFIG" ]; then
     ln -fs "$DIR/config" "$POLYBAR_CONFIG_DIR"
     ln -fs "$DIR/launch.sh" "$POLYBAR_CONFIG_DIR"

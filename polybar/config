@@ -134,8 +134,8 @@ font-3 = Font Awesome 5 Free:style=Solid;3
 
 modules-left = i3 arrowright4 xwindow arrowright6
 modules-center = spotify previous playpause next
-; modules-right = arrowleft6 battery headset arrowleft7 cpu memory temperature arrowleft8 date arrowleft9 backlight alsa powermenu
-modules-right = arrowleft6 battery arrowleft7 cpu memory temperature filesystem arrowleft8 date arrowleft9 backlight alsa powermenu
+; modules-right = arrowleft6 battery headset arrowleft7 cpu memory temperature arrowleft8 date arrowleft9 backlight pulseaudio-control powermenu
+modules-right = arrowleft6 battery arrowleft7 cpu memory temperature filesystem arrowleft8 date arrowleft9 backlight pulseaudio-control powermenu
 
 tray-position = ${env:TRAY}
 tray-detached = false
@@ -484,29 +484,15 @@ format-foreground = ${colors.black}
 exec-if = "/usr/bin/headsetcontrol -b"
 exec = "/usr/bin/headsetcontrol -b -c"
 
-[module/alsa]
-type = internal/alsa
-
-master-soundcard = default
-speaker-soundcard = default
-headphone-soundcard = default
-
-format-volume = <ramp-volume><label-volume>
-label = "%percentage%% "
-label-muted = "Muted"
-label-muted-foreground = ${colors.9}
-
-ramp-volume-0 = " "
-ramp-volume-1 = " "
-ramp-volume-2 = " "
-
-label-volume-background = ${colors.background-alt}
+[module/pulseaudio-control]
+type = custom/script
+tail = true
+exec = ~/.config/polybar/pulseaudio-control.sh --icons-volume " , " --icon-muted " " --sink-nicknames-from "alsa.card_name" listen
+click-right = exec pavucontrol &
+click-left = ~/.config/polybar/pulseaudio-control.sh togmute
+click-middle = ~/.config/polybar/pulseaudio-control.sh next-sink
+scroll-up = ~/.config/polybar/pulseaudio-control.sh --volume-max 130 up
+scroll-down = ~/.config/polybar/pulseaudio-control.sh --volume-max 130 down
+label-background = ${colors.background-alt}
 ramp-volume-background = ${colors.background-alt}
-
 label-muted-background = ${colors.background-alt}
-
-master-mixer = Master
-mapped = false
-interval = 5
-scroll-up = amixer set Master 10%+
-scroll-down = amixer set Master 10%-
