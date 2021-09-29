@@ -12,9 +12,10 @@
 set $mod Mod4
 font pango:Hack, unifont, Font Awesome 5 Free 9
 
-exec_always --no-startup-id killall conky; sleep 1 && conky -c ~/.config/conky/conky.conf
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh &
+exec_always --no-startup-id conky -c ~/.config/conky/conky.conf
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 exec_always --no-startup-id nitrogen --restore
+exec_always --no-startup-id picom &
 
 # Sreen brightness controls
 #bindsym XF86MonBrightnessUp exec light -A 10 # increase screen brightness
@@ -31,7 +32,7 @@ workspace_layout stacking
 
 # start a terminal
 #bindsym $mod+Return exec urxvt
-bindsym $mod+Return exec termite
+bindsym $mod+Return exec alacritty
 
 # kill focused window
 bindsym $mod+x kill
@@ -171,6 +172,7 @@ for_window [title="Android Emulator -"] floating enable
 for_window [title="win0"] floating enable, move position center
 for_window [class="Wine System Tray"] move scratchpad
 for_window [class="^jetbrains-.+"][window_type=dialog] focus
+for_window [class="^Pidgin$" window_role="^conversation$"] resize grow width 0 px or 30 ppt; move left
 
 #Window Assignments
 assign [class="Slack"] 4
@@ -178,6 +180,7 @@ assign [class="Evolution"] 4
 assign [class="discord"] 4
 assign [class="TelegramDesktop"] 4
 assign [class="Spotify"] 5
+assign [class="discord"] 4
 
 # i3-gaps
 gaps inner 4

@@ -7,7 +7,10 @@ DIR="$(cd -P "$(dirname "$(readlink --canonicalize "${BASH_SOURCE[0]}")")" && pw
 
 export TERM="xterm-256color"
 export EDITOR="vim"
-export PATH="$PATH:$DIR/bin:$HOME/.local/bin"
+
+export GOPATH="$HOME/go"
+
+export PATH="$PATH:$DIR/bin:$HOME/.local/bin:$GOROOT/bin"
 
 #source .sh files in the directories listed in the following array.
 scriptDirPaths=("bash")

@@ -8,14 +8,14 @@
 ;=====================================================
 
 [colors]
-background = #282c34
+background = #aa282c34
 background-alt = #444
 foreground = #abb2bf
 foreground-alt = #55
 primary = #E06C75
 secondary = #98c379
 black = #000000
-purple = #c678dd
+purple = #7e02de
 white = #ffffff
 3 = #d19a66
 ;4 = #61aeee
@@ -47,7 +47,7 @@ type = custom/text
 content = ""
 content-font = 2
 content-margin-bottom = 800
-content-foreground = ${colors.6}
+content-foreground = ${colors.4}
 content-background = ${colors.background}
 
 [module/arrowleft]
@@ -104,9 +104,10 @@ bottom = true
 enable-ipc = true
 monitor = ${env:MONITOR:HDMI-1}
 width = 100%
-height = 22
+height = 25
 offset-x = 0
 offset-y = 0
+radius = 0.0
 
 ;background = ${xrdb:color9}
 background = ${colors.background}
@@ -123,17 +124,18 @@ underline-color = #00f
 
 ; padding-left = 0
 ; padding-right = 0
-; module-margin-left = 0
-; module-margin-right = 0
+;module-margin-left = 1
+;module-margin-right = 1
 
-font-0 = Hack:pixelsize=10:;2
+font-0 = Hack:pixelsize=11:;2
 font-1 = Hack:pixelsize=32;6
 font-2 = Unifont:style=Medium;2
 font-3 = Font Awesome 5 Free:style=Solid;3
 
 modules-left = i3 arrowright4 xwindow arrowright6
 modules-center = spotify previous playpause next
-modules-right = arrowleft6 battery headset arrowleft7 cpu memory temperature arrowleft8 date arrowleft9 backlight alsa powermenu
+; modules-right = arrowleft6 battery headset arrowleft7 cpu memory temperature arrowleft8 date arrowleft9 backlight alsa powermenu
+modules-right = arrowleft6 battery arrowleft7 cpu memory temperature filesystem arrowleft8 date arrowleft9 backlight alsa powermenu
 
 tray-position = ${env:TRAY}
 tray-detached = false
@@ -141,7 +143,7 @@ tray-maxsize = 20
 tray-background = ${colors.background-alt}
 tray-offset-x = 0
 tray-offset-y = 0
-tray-padding = 0
+tray-padding = 4
 tray-scale = 1.0
 
 ;wm-restack = bspwm
@@ -317,7 +319,7 @@ label-disconnected-foreground = ${colors.foreground-alt}
 type = internal/date
 interval = 5
 
-date = " %b %d"
+date = "%a, %b %d"
 date-alt =
 
 time = %H:%M
@@ -411,8 +413,9 @@ animation-charging-framerate = 750
 [module/temperature]
 type = internal/temperature
 thermal-zone = 2
-base-temperature = 20
-warn-temperature = 70
+; hwmon-path = /sys/devices/platform/coretemp.0/hwmon/hwmon3/temp1_input
+base-temperature = 30
+warn-temperature = 90
 
 format = <ramp><label>
 format-warn = <ramp><label-warn>
@@ -426,7 +429,7 @@ label-warn-background = ${colors.background-alt}
 ramp-0 = 
 ramp-1 = 
 ramp-2 = 
-ramp-foreground = ${colors.foreground-alt}
+ramp-foreground = ${colors.foreground}
 ramp-background = ${colors.background-alt}
 
 [module/powermenu]
@@ -468,7 +471,7 @@ interval = 1
 format-prefix = " "
 format = <label>
 exec-if = "pgrep spotify"
-exec = python2 /home/blake/polybar-spotify-controls/scripts/spotify/spotify_status.py -f '{artist}: {song}'
+exec = python3 /home/blake/polybar-spotify-controls/scripts/spotify/spotify_status.py -f '{artist}: {song}'
 format-underline = #1db954
 
 [module/headset]
