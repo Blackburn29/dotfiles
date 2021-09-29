@@ -134,8 +134,7 @@ font-3 = Font Awesome 5 Free:style=Solid;3
 
 modules-left = i3 arrowright4 xwindow arrowright6
 modules-center = spotify previous playpause next
-; modules-right = arrowleft6 battery headset arrowleft7 cpu memory temperature arrowleft8 date arrowleft9 backlight pulseaudio-control powermenu
-modules-right = arrowleft6 battery arrowleft7 cpu memory temperature filesystem arrowleft8 date arrowleft9 backlight pulseaudio-control powermenu
+modules-right = arrowleft6 battery arrowleft7 cpu memory temperature filesystem pulseaudio-control arrowleft8 date arrowleft9
 
 tray-position = ${env:TRAY}
 tray-detached = false
@@ -143,19 +142,26 @@ tray-maxsize = 20
 tray-background = ${colors.background-alt}
 tray-offset-x = 0
 tray-offset-y = 0
-tray-padding = 4
+tray-padding = 3
 tray-scale = 1.0
 
-;wm-restack = bspwm
-;wm-restack = i3
+[module/date]
+type = internal/date
+interval = 5
 
-;override-redirect = true
+date = "%a, %b %d"
+date-alt =
 
-;scroll-up = bspwm-desknext
-;scroll-down = bspwm-deskprev
+time = %H:%M
+time-alt = %H:%M
 
-;scroll-up = i3wm-wsnext
-;scroll-down = i3wm-wsprev
+format-prefix-background = ${colors.12}
+format-prefix-foreground = ${colors.black}
+; format-underline = #c678dd
+
+label = "%date% %time%"
+label-background = ${colors.12}
+label-foreground = ${colors.black}
 
 [module/xwindow]
 type = internal/xwindow
@@ -164,26 +170,16 @@ label-background = ${colors.6}
 label-foreground = ${colors.black}
 label-maxlen = 80
 
-[module/xkeyboard]
-type = internal/xkeyboard
-blacklist-0 = num lock
-label-layout = %{F#55}%{F-} %layout%
-label-layout-underline = ${colors.secondary}
-label-indicator-padding = 2
-label-indicator-margin = 1
-label-indicator-background = ${colors.secondary}
-label-indicator-underline = ${colors.secondary}
-
 [module/filesystem]
 type = internal/fs
 interval = 25
 
-mount-0 = /
-mount-1 = /var
-mount-2 = /home
+;mount-0 = /
+mount-0 = /var
+mount-1 = /home
 
 spacing = 0
-label-mounted = "  %mountpoint%%{F-}: %percentage_used%%"
+label-mounted = "  %mountpoint%%{F-}: %percentage_used%% "
 label-mounted-background = ${colors.background-alt}
 label-unmounted = (%mountpoint%)
 label-unmounted-foreground = ${colors.foreground-alt}
@@ -239,28 +235,6 @@ label-visible-background = ${colors.background-alt}
 label-visible-padding = ${self.label-focused-padding}
 ; label-visible-underline = ${self.label-focused-underline}
 
-[module/mpd]
-type = internal/mpd
-
-format-online = <label-song>  <icon-prev> <icon-seekb> <icon-stop> <toggle> <icon-seekf> <icon-next>  <icon-repeat> <icon-random>
-
-label-song-maxlen = 25
-label-song-ellipsis = true
-
-icon-prev = 
-icon-seekb = 
-icon-stop = 
-icon-play = 
-icon-pause = 
-icon-next = 
-icon-seekf = 
-
-icon-random = 
-icon-repeat = 
-
-toggle-on-foreground = ${colors.primary}
-toggle-off-foreground = #66
-
 [module/cpu]
 type = internal/cpu
 interval = 2
@@ -280,97 +254,6 @@ format-prefix-foreground = ${colors.foreground-alt}
 label = "%percentage_used%%  "
 format-background = ${colors.background-alt}
 label-background = ${colors.background-alt}
-
-[module/wlan]
-type = internal/network
-interface = wlp2s0
-interval = 3.0
-
-format-connected = <ramp-signal> <label-connected>
-format-connected-underline = ${colors.secondary}
-format-disconnected-underline = ${self.format-connected-underline}
-
-label-connected =  %essid%
-label-disconnected = %ifname% disconnected
-label-disconnected-foreground = ${colors.foreground-alt}
-
-ramp-signal-0 = 
-ramp-signal-1 = 
-ramp-signal-2 = 
-ramp-signal-3 = 
-ramp-signal-4 = 
-ramp-signal-foreground = ${colors.foreground-alt}
-
-[module/eth]
-type = internal/network
-interface = ens1
-interval = 3.0
-
-format-connected-underline = ${colors.4}
-format-connected-prefix = " "
-format-connected-foreground-foreground = ${colors.foreground-alt}
-label-connected = %local_ip%
-
-format-disconnected-underline = ${self.format-connected-underline}
-label-disconnected = %ifname% disconnected
-label-disconnected-foreground = ${colors.foreground-alt}
-
-[module/date]
-type = internal/date
-interval = 5
-
-date = "%a, %b %d"
-date-alt =
-
-time = %H:%M
-time-alt = %H:%M
-
-format-prefix = 
-format-prefix-background = ${colors.12}
-format-prefix-foreground = ${colors.black}
-; format-underline = #c678dd
-
-label = "%date% %time%"
-label-background = ${colors.12}
-label-foreground = ${colors.black}
-
-[module/backlight]
-type = internal/backlight
-card = intel_backlight
-
-format = <label>
-
-label = "  %percentage%%  "
-label-background = ${colors.background-alt}
-
-bar-width = 10
-bar-indicator = |
-bar-fill = ─
-bar-empty = ─
-scroll-up = exec light -A 10
-scroll-down = exec light -U 10
-
-[module/pulseaudio]
-type = internal/pulseaudio
-
-use-ui-max = true
-
-interval = 5
-format-volume = <ramp-volume> <label-volume>
-
-label-volume = "  %percentage%%"
-label-volume-background = ${colors.background-alt}
-
-label-muted = "  "
-label-muted-foreground = #666
-label-muted-background = ${colors.background-alt}
-
-ramp-volume-0 = 🔈
-ramp-volume-1 = 🔉
-ramp-volume-2 = 🔊
-
-click-right = pavucontrol
-; click-middle =
 
 [module/battery]
 type = internal/battery
@@ -432,39 +315,6 @@ ramp-2 = 
 ramp-foreground = ${colors.foreground}
 ramp-background = ${colors.background-alt}
 
-[module/powermenu]
-type = custom/menu
-
-format-spacing = 1
-
-label-open = "  "
-label-open-foreground = ${colors.primary}
-label-open-background = ${colors.background-alt}
-label-close =  " cancel"
-label-close-foreground = ${colors.primary}
-label-close-background = ${colors.background-alt}
-label-separator = |
-label-separator-foreground = ${colors.foreground-alt}
-label-separator-background = ${colors.background-alt}
-
-menu-0-0 = reboot
-menu-0-0-exec = menu-open-1
-menu-0-1 = power off
-menu-0-1-exec = menu-open-2
-menu-0-1-background = ${colors.background-alt}
-
-menu-1-0 = cancel
-menu-1-0-exec = menu-open-0
-menu-1-1 = reboot
-menu-1-1-exec = sudo reboot
-menu-1-1-background = ${colors.background-alt}
-
-menu-2-0 = power off
-menu-2-0-exec = sudo poweroff
-menu-2-1 = cancel
-menu-2-1-exec = menu-open-0
-menu-2-1-background = ${colors.background-alt}
-
 [module/spotify]
 type = custom/script
 interval = 1
@@ -487,7 +337,7 @@ exec = "/usr/bin/headsetcontrol -b -c"
 [module/pulseaudio-control]
 type = custom/script
 tail = true
-exec = ~/.config/polybar/pulseaudio-control.sh --icons-volume " , " --icon-muted " " --sink-nicknames-from "alsa.card_name" listen
+exec = ~/.config/polybar/pulseaudio-control.sh --icons-volume "  ,  " --icon-muted " " --sink-nicknames-from "alsa.card_name" listen
 click-right = exec pavucontrol &
 click-left = ~/.config/polybar/pulseaudio-control.sh togmute
 click-middle = ~/.config/polybar/pulseaudio-control.sh next-sink

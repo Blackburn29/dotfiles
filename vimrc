@@ -2,24 +2,21 @@ set nocompatible
 
 "Initialize and setup Vundle.
 filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+call plug#begin('~/.vim/plugged')
 "Let Vundle manage Vundle, required! Do not add comment at end of Plugin lines.
-Plugin 'gmarik/Vundle.vim'
+Plug 'gmarik/Vundle.vim'
 "List Plugins here.
 "UI
-Plugin 'itchyny/lightline.vim'
-Plugin 'blueshirts/darcula'
-Plugin 'KeitaNakamura/neodark.vim'
-Plugin 'scrooloose/nerdtree'
+Plug 'itchyny/lightline.vim'
+Plug 'blueshirts/darcula'
+Plug 'KeitaNakamura/neodark.vim'
+Plug 'scrooloose/nerdtree'
 "Editing Tools
-Plugin 'Shougo/deoplete.nvim'
-Plugin 'dense-analysis/ale'
-Plugin 'ctrlpvim/ctrlp.vim'
-"PHP
-Plugin 'StanAngeloff/php.vim'
+Plug 'ycm-core/YouCompleteMe'
+Plug 'dense-analysis/ale'
+Plug 'ctrlpvim/ctrlp.vim'
 "All of Plugins must be added before the following line.
-call vundle#end()
+call plug#end()
 
 syntax on
 filetype on
