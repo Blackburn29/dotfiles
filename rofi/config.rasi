@@ -2,9 +2,10 @@ configuration {
     modi: "run,combi,drun";
     combi-modi: "drun,run";
     show-icons: true;
-    terminal: "terminator";
+    terminal: "alacritty";
     sidebar-mode: true;
-    theme: ".config/rofi/slate";
     //levenshtein-sort: true;
     sort: true;
 }
+@theme "slate"
+

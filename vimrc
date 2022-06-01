@@ -15,6 +15,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'ycm-core/YouCompleteMe'
 Plug 'dense-analysis/ale'
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'martinda/Jenkinsfile-vim-syntax'
 "All of Plugins must be added before the following line.
 call plug#end()
 
@@ -176,6 +177,7 @@ try
     colorscheme neodark
 catch
 endtry
+
 
 "Line Warnings - Set after theme to override
 highlight ColorColumn ctermbg=233 guibg=#1c1c1c

@@ -20,20 +20,6 @@ fi
 echo "$DIR"
 
 
-manage_bash() {
-    #add a source line to ~/.bashrc to source this file if it does not already exist.
-    if ! grep -q "source.*$DIR/bashrc" ~/.bashrc; then
-        echo -e "\nsource $DIR/bashrc\n" >> ~/.bashrc
-    fi
-
-    ln -sf $DIR/Xresources $HOME/.Xresources
-
-    if [ -x "$(command -v xrdb)" ]; then
-        echo "Reloading Xresources..."
-        xrdb $HOME/.Xresources
-    fi
-}
-
 manage() {
     function_name="manage_$1"
     MANAGE_FILE="./$1/manage.sh"

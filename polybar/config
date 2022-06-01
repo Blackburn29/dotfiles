@@ -19,16 +19,19 @@ purple = #7e02de
 white = #ffffff
 3 = #d19a66
 ;4 = #61aeee
-4 = #62afee
+;4 = #62afee
+4 = #5B34Fc
 5 = #c678dd
 ;6 = #56b6c2
-6 = #62afee
+;6 = #62afee
+6 = #5910EA
 7 = #abb2bf
 8 = #5c6370
 9 = #e06c75
 10 = #98c379
 11 = #d19a66
-12 = #62afee
+;12 = #62afee
+12 = #5910EA
 13 = #c678dd
 14 = #56b6c2
 
@@ -65,7 +68,7 @@ type = custom/text
 content = " "
 content-font = 2
 content-margin-bottom = 800
-content-foreground = ${colors.6}
+content-foreground = ${colors.4}
 content-background = ${colors.background}
 
 [module/arrowleft7]
@@ -75,7 +78,7 @@ content = " "
 content-font = 2
 content-margin-bottom = 800
 content-foreground = ${colors.background-alt}
-content-background = ${colors.6}
+content-background = ${colors.4}
 
 [module/arrowleft8]
 ; background to trans
@@ -83,7 +86,7 @@ type = custom/text
 content = " "
 content-font = 2
 content-margin-bottom = 800
-content-foreground = ${colors.12}
+content-foreground = ${colors.4}
 content-background = ${colors.background-alt}
 
 [module/arrowleft9]
@@ -93,7 +96,7 @@ content = " "
 content-font = 2
 content-margin-bottom = 800
 content-foreground = ${colors.background-alt}
-content-background = ${colors.12}
+content-background = ${colors.4}
 
 [global/wm]
 margin-top = 5
@@ -134,7 +137,7 @@ font-3 = Font Awesome 5 Free:style=Solid;3
 
 modules-left = i3 arrowright4 xwindow arrowright6
 modules-center = spotify previous playpause next
-modules-right = arrowleft6 battery arrowleft7 cpu memory temperature filesystem pulseaudio-control arrowleft8 date arrowleft9
+modules-right = arrowleft6 battery headset arrowleft7 cpu memory temperature arrowleft8 filesystem arrowleft7 pulseaudio-control arrowleft8 date arrowleft9
 
 tray-position = ${env:TRAY}
 tray-detached = false
@@ -155,34 +158,39 @@ date-alt =
 time = %H:%M
 time-alt = %H:%M
 
-format-prefix-background = ${colors.12}
+format-prefix-background = ${colors.4}
 format-prefix-foreground = ${colors.black}
 ; format-underline = #c678dd
 
 label = "%date% %time%"
-label-background = ${colors.12}
+label-background = ${colors.4}
 label-foreground = ${colors.black}
 
 [module/xwindow]
 type = internal/xwindow
 label = "  %title%"
-label-background = ${colors.6}
+label-background = ${colors.4}
 label-foreground = ${colors.black}
 label-maxlen = 80
 
 [module/filesystem]
 type = internal/fs
-interval = 25
+interval = 5
 
 ;mount-0 = /
 mount-0 = /var
 mount-1 = /home
 
 spacing = 0
-label-mounted = "  %mountpoint%%{F-}: %percentage_used%% "
-label-mounted-background = ${colors.background-alt}
+;label-mounted = " %mountpoint%%{F-}: %percentage_used%% "
+label-mounted-background = ${colors.4}
+label-mounted-padding = 1
+label-mounted-foreground = ${colors.black}
 label-unmounted = (%mountpoint%)
-label-unmounted-foreground = ${colors.foreground-alt}
+label-unmounted-foreground = ${colors.black}
+
+format-prefix-background = ${colors.4}
+format-prefix-foreground = ${colors.black}
 
 
 [module/bspwm]
@@ -264,16 +272,16 @@ full-at = 98
 time-format = %H:%M
 
 format-charging = <animation-charging> <label-charging>
-format-charging-background = ${colors.6}
+format-charging-background = ${colors.4}
 format-charging-foreground = ${colors.black}
 
 format-discharging = <ramp-capacity> <label-discharging>
-format-discharging-background = ${colors.6}
+format-discharging-background = ${colors.4}
 format-discharging-foreground = ${colors.black}
 
 format-full-prefix = " "
 format-full-prefix-foreground = ${colors.13}
-format-full-background = ${colors.6}
+format-full-background = ${colors.4}
 format-full-foreground = ${colors.black}
 
 label-charging = "%percentage%%"
@@ -327,12 +335,12 @@ format-underline = #1db954
 [module/headset]
 type = custom/script
 interval = 10
-format-prefix = "  "
+format-prefix = "   "
 label = %output%%
-format-background = ${colors.6}
+format-background = ${colors.4}
 format-foreground = ${colors.black}
-exec-if = "/usr/bin/headsetcontrol -b"
-exec = "/usr/bin/headsetcontrol -b -c"
+exec-if = "[[ $(/usr/local/bin/headsetcontrol -b -c) -gt 0 ]]"
+exec = "/usr/local/bin/headsetcontrol -b -c"
 
 [module/pulseaudio-control]
 type = custom/script

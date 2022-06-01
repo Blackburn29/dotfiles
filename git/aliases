@@ -1,0 +1,8 @@
+[alias]
+    rbi = "!git add --all && git commit -am "ASD" && git rebase -i HEAD~2"
+    rsync = "!git fetch && git rebase"
+    bclean = "!f() { git branch --merged | egrep -v \"(^\\*|master|develop)\" | xargs git branch -d; }; f"
+    bcleanall = "!f() { git branch | egrep -v \"(^\\*|master|develop)\" | xargs git branch -D; }; f"
+    rclean = "!f() { git branch -r --merged | egrep -v '(^\\*|master|develop)' | xargs -n 1 git push --delete; }; f"
+    rpull = "!git fetch && git rebase"
+
