@@ -1,3 +1,4 @@
 plugins = [
-    "ItsDrike/hyprland-dwindle-autogroup"
+    "ItsDrike/hyprland-dwindle-autogroup",
+    "hyprwm/hyprland-plugins"
 ]
