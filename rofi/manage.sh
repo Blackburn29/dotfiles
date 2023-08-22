@@ -1,4 +1,3 @@
-
 #!/bin/bash
 
 if ! [ -x "$(command -v rofi)" ]; then
