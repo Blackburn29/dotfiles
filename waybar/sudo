@@ -1,0 +1,2 @@
+gui-apps/wifi ~amd64 tee /etc/portage/package.accept_keywords/default
+gui-apps/swww::guru ~amd64 tee -a /etc/portage/package.accept_keywords/default
