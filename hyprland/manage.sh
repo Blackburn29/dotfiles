@@ -20,4 +20,5 @@ if [ ! -h "$HYPRLAND_CONFIG" ]; then
     ln -fs "$DIR/hyprland.conf" "$HYPRLAND_CONFIG_DIR"
     ln -fs "$DIR/xdg-portal-hyprland" "$HYPRLAND_CONFIG_DIR"
     ln -fs "$DIR/hyprload.toml" "$HYPRLAND_CONFIG_DIR"
+    ln -fs "$DIR/hyprcwd" "$HYPRLAND_CONFIG_DIR"
 fi
