@@ -15,6 +15,8 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'martinda/Jenkinsfile-vim-syntax'
 call plug#end()
 
+set mouse=
+
 syntax on
 filetype on
 filetype plugin indent on
