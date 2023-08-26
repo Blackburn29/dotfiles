@@ -9,7 +9,8 @@ Plug 'rakr/vim-one'
 Plug 'KeitaNakamura/neodark.vim'
 Plug 'scrooloose/nerdtree'
 "Editing Tools
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
+Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
 Plug 'dense-analysis/ale'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'martinda/Jenkinsfile-vim-syntax'
@@ -198,6 +199,8 @@ try
     colorscheme one
 catch
 endtry
+
+let g:coq_settings = { 'auto_start': 'shut-up' }
 
 
 "Line Warnings - Set after theme to override
